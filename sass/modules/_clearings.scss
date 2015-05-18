@@ -1,0 +1,16 @@
+.clear,
+.content-area,
+.entry-content,
+.single-entry .entry-footer,
+.comments-footer,
+.comment-content,
+.site-header,
+.site-content,
+.site-footer,
+.issue-section,
+.issue-section-leftovers,
+.category-posts,
+.author-bio-section,
+.next-prev-wrap {
+	@include clearfix;
+}

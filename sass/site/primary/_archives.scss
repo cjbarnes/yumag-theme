@@ -1,0 +1,82 @@
+.archive-header {
+	@include rem( "margin-bottom", ( $line * 2.5 ) );
+}
+
+.archive-title {
+	@include font-size-line( "normal" );
+	margin: 0;
+	font-weight: $font-weight__serif;
+	font-family: $font-family__main;
+	text-transform: none;
+
+	a {
+		@extend %hide-underline;
+		font-weight: inherit;
+		color: $black;
+	}
+
+}
+
+.next-prev-issue-title {
+	@include rem( "padding-bottom", $line );
+	position: relative;
+	text-align: center;
+}
+
+/* eg 'ISSUE ONE' */
+.issue-number,
+.search-term,
+.archive-term {
+	font-weight: $font-weight__serif__bold;
+	letter-spacing: $letter-spacing__caps;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: $font-family__button;
+}
+
+/* Big central search form */
+.search-results-search,
+.page-search {
+	@include rem( "margin-bottom", ( $line * 2 ) );
+	text-align: center;
+
+	/* Both the text field and the button */
+	input {
+		@include font-size-line( "larger" );
+		width: 80%;
+		border-radius: 0;
+		vertical-align: middle;
+	}
+
+	/* Hide button to save space on mobiles. */
+	.search-submit {
+		display: none;
+	}
+
+}
+
+
+@include media( "main-spacing" ) {
+
+	.search-results-search,
+	.page-search {
+
+		input {
+			width: 40%;
+		}
+
+		/* Big central search form */
+		.search-submit {
+			@include font-size-line( "small" );
+			display: inline-block;
+			width: auto;
+			padding: 3px 1em;
+			font-weight: $font-weight__serif__bold;
+			font-family: $font-family__button;
+			text-transform: uppercase;
+			letter-spacing: $letter-spacing__caps;
+		}
+
+	}
+
+}

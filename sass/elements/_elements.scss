@@ -1,0 +1,99 @@
+html {
+	box-sizing: border-box;
+	-webkit-font-smoothing: subpixel-antialiased; /* Fix for a flash of differently-aliased text during homepage slider transitions. */
+}
+
+/*
+ * Inherit box-sizing to make it easier to change the property for components
+ * that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/* The background for the menu and search sidebars. */
+html {
+	position: relative;
+	background: $background-color__menu;
+
+	/* Leave room for the toolbar. */
+	&.admin-bar {
+		//height: ;
+	}
+
+}
+
+/*
+ * The 'real' background form the user's perspective.
+ * 1. To establish a new stacking context, for overlapping the sidebars.
+ * 2. Don't leave any room underneath this container on short pages.
+ * 3. Prevent centred Issue section posts areas from overflowing-right.
+ */
+.site {
+	position: relative; /* 1 */
+	min-height: 100vh; /* 2 */
+	background: $background-color;
+	overflow-x: hidden; /* 3 */
+}
+
+.site-main {
+	/* For positioning of main content under the slider in Firefox/IE. */
+	clear: both;
+}
+
+blockquote,
+q {
+	quotes: "" "";
+
+	&:before,
+	&:after {
+		content: "";
+	}
+
+}
+
+blockquote {
+	@include font-size-line( "large" );
+	font-style: italic;
+	font-weight: $font-weight__serif__bold;
+	font-family: $font-family__blockquote;
+}
+
+cite {
+	font-style: normal;
+	font-weight: $font-weight__serif__bold;
+	font-size: 0.9em;
+	font-family: $font-family__cite;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+hr {
+	@include rem( "margin", ( $line * 1.5 ) ( ( 100% - $width__rule ) / 2 ) );
+	background-color: $color__yorklife;
+	border: 0;
+	width: $width__rule;
+	height: $height__rule;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+	width: auto\9; /* IE8 hack to fix distorted images with max-widths */
+}
+
+// Remove normalize left/right padding that alters proper content alignment.
+figure {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+figcaption,
+.wp-caption-dd {
+	@include font-size-line("small");
+	font-weight: $font-weight__serif__bold;
+	font-family: $font-family__caption;
+	text-align: center;
+}

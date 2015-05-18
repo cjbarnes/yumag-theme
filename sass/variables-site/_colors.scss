@@ -1,0 +1,112 @@
+// Colour palette
+// -------------------------------------------------------------
+
+$white: #fff;
+$black: #171717;
+
+$grey:           #626272;
+$grey__light:    #9696a0;
+$grey__lightest: #e0e0e4;
+
+// DARO colour palette
+//// YorkSpace
+$yorkspace-blue:           #7181a5;
+$yorkspace-blue__lightest: #dbe2f2;
+$yorkspace-blue__light:    #bcc4d8;
+$yorkspace-blue__dark:     #3f4e6f;
+//// YAA
+$yaa-green:           #78a146;
+$yaa-green__lightest: #bfcd97;
+$yaa-green__light:    #a8bc77;
+$yaa-green__dark:     #53604f;
+//// Giving
+$giving-pink:           #a23579;
+$giving-pink__lightest: #f0dde9;
+$giving-pink__light:    #e2bad1;
+$giving-pink__dark:     #711950;
+//// Misc
+$yorkspace-aqua:        #89c7ad;
+$yorkspace-aqua__light: #b3e0d2;
+$yorkspace-aqua__dark:  $yaa-green__dark;
+//// Yucycle
+$yucycle-green:        #2fac66;
+$yucycle-green__light: #b1ddc3;
+$yucycle-grey:         #f5f5f7;
+$yucycle-blue:         #139ceb;
+$yucycle-blue__light:  #d3eef9;
+
+// Magazine colour palette
+//// row 1
+$jambalaya:       #4d2b10; // dark brown
+$mountain-meadow: #149b71; // turquoise
+$yellow-green:    #b0d46b; // light green
+$downy:           #69bcc9; // light blue         // Open minds
+$plum:            #803c7d; // purple
+//// row 2
+$muddy-waters:    #b68859; // mid brown
+$spring-rain:     #9acd9c; // mint              // All about yu
+$sahara-sand:     #f0ef84; // pale yellow-green // Centre stage
+$jungle-mist:     #b6ced3; // sky blue
+$tapestry:        #b967a7; // dull magenta
+//// row 3
+$sisal:           #dcd4c6; // warm grey         // Yorklife
+$tango:           #f38118; // orange
+$ripe-lemon:      #f7ed27; // yellow
+$curious-blue:    #139ceb; // bright blue
+$monza:           #e5001c; // bright red
+//// row 4
+$dove-grey:       #686767; // dark grey
+$oslo-grey:       #818386; // aluminium
+$fun-blue:        #1960ae; // flag blue
+$shiraz:          #ae0922; // dark red
+
+$snuff:           #e8cfeb; // pink              // Back page
+
+// Functional colours
+// -------------------------------------------------------------
+
+$border-color__button:       #ccc #ccc #bbb;
+$border-color__button-hover: #ccc #bbb #aaa;
+$border-color__button-focus: #aaa #bbb #bbb;
+$border-color__input:        #ccc;
+$border-color__abbr:         #666;
+
+$background-color:         $white;
+$background-color__screen: #f1f1f1;
+$background-color__rule:   #ccc;
+$background-color__button: #e6e6e6;
+$background-color__pre:    #eee;
+$background-color__ins:    #fff9c0;
+$background-color__menu:   $black;
+$background-color__footer: $grey__lightest;
+
+$color__main:                 $black;
+$color__screen:               #21759b;
+$color__input:                $grey;
+$color__input-focus:          $color__main;
+$color__link:                 $fun-blue;
+$color__link-visited:         $color__link;
+$color__link-hover:           darken( $color__link, 15% );
+$color__link__reversed:       $downy;
+$color__link-hover__reversed: lighten( $color__link__reversed, 15% );
+$color__menu-toggle:          $color__main;
+$color__menu-toggle-hover:    $grey;
+
+$color__neutral:     $grey__light;
+$color__yorklife:    $sisal;
+$color__openminds:   $downy;
+$color__centrestage: $sahara-sand;
+$color__allaboutyu:  $spring-rain;
+$color__backpage:    $snuff;
+
+$color__yorklife__dark:    darken( $sisal, 15% );
+$color__openminds__dark:   darken( $downy, 15% );
+$color__centrestage__dark: darken( $sahara-sand, 25% );
+$color__allaboutyu__dark:  darken( $spring-rain, 15% );
+$color__backpage__dark:    darken( $snuff, 15% );
+
+$color__yorklife__darker:    darken( $sisal, 35% );
+$color__openminds__darker:   darken( $downy, 30% );
+$color__centrestage__darker: darken( $sahara-sand, 35% );
+$color__allaboutyu__darker:  darken( $spring-rain, 30% );
+$color__backpage__darker:    darken( $snuff, 30% );

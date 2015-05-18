@@ -1,0 +1,20 @@
+.page-content,
+.entry-content,
+.comment-content {
+
+	.wp-smiley {
+		border: none;
+		margin-bottom: 0;
+		margin-top: 0;
+		padding: 0;
+	}
+
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	display: block; /* Fix for text-indent being applied to containing p. */
+	max-width: 100%;
+}

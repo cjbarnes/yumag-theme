@@ -1,0 +1,91 @@
+.site-header {
+	@include rem( "height", $height__masthead );
+}
+
+.site-title {
+	@extend %title-font;
+	@include rem( "line-height", $height__masthead );
+	margin: 0;
+	text-align: center;
+}
+
+.site-logo-link {
+	text-align: center;
+
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		border: 0;
+	}
+
+}
+
+.site-logo {
+	position: relative;
+	top: 0.1em; /* The bottom part of the logo is a 'Y' descender, so we shift the image so its 'baseline' looks right. */
+	vertical-align: middle;
+}
+
+.site-description {
+	display: none;
+}
+
+.site-header-single {
+	@include rem( "margin-top", $line );
+	@include rem( "margin-bottom", $line );
+	height: auto;
+	text-align: center;
+
+	a {
+		border: 0;
+	}
+
+	img {
+		position: static; /* Override pos:relative for Yu logo. */
+		vertical-align: top;
+	}
+
+	.slash {
+		display: none;
+	}
+
+}
+
+.site-title-term {
+	display: none;
+}
+
+
+/* Space out the toggle buttons more for wider screens */
+@include media( "main-spacing" ) {
+
+	.site-header-single {
+		margin-bottom: 0;
+
+		.slash {
+			position: relative;
+			top: -0.3em;
+			display: inline-block;
+			margin-right: 0.1em;
+			font-size: 3em;
+			line-height: 1;
+			font-family: $font-family__sans-serif;
+			color: $grey__lightest;
+		}
+
+	}
+
+	.site-title-term {
+		@include font-size-line( "large", 0.75 );
+		position: relative;
+		display: inline-block;
+		font-weight: $font-weight__serif__bold;
+		font-family: $font-family__sans-serif;
+		text-transform: uppercase;
+		color: $grey__light;
+		border: 0;
+		vertical-align: top;
+	}
+
+}

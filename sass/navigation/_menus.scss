@@ -1,0 +1,341 @@
+/* Hide menus when JavaScript is off */
+.no-js .js-menu-area {
+	display: none !important;
+}
+
+
+/* Animation for moving the page 'out of the way' of the sidebars. */
+.site {
+	transition: $transition-time__menu transform $transition-type;
+}
+
+/* Menu sidebar. */
+.main-navigation {
+	clear: both;
+	display: block;
+	float: left;
+	width: 100%;
+
+	ul {
+		@include font-size( "small" );
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		font-family: $font-family__nav;
+		text-transform: uppercase;
+		letter-spacing: $letter-spacing__caps;
+	}
+
+}
+
+/*
+ * 1. Even though these are overlapped by the main content area, we still have
+ *    to hide them until they're displayed so they don't peek out above or
+ *    below the main content when the scrolling is rubber-banding.
+ */
+.main-navigation-wrapper,
+.main-search-wrapper {
+	display: none; /* 1 */
+	width: $width__menu;
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    color: $white;
+
+    /* Make sure links are visible. */
+    a {
+    	font-weight: $font-weight__serif__bold;
+    	color: $color__link__reversed;
+    	border-bottom: 0;
+
+    	&:hover,
+    	&:focus,
+    	&:active {
+    		color: $color__link-hover__reversed;
+    	}
+
+    }
+
+    /* Hide links that are only used in the backup menu in the page footer */
+    .no-js-only {
+    	display: none;
+    }
+
+}
+
+
+.main-navigation-wrapper {
+	left: 0;
+
+	a {
+		display: block;
+		text-decoration: none;
+		color: $white;
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a {
+	}
+
+}
+
+.main-search-wrapper {
+	right: 0;
+
+	/* Right-aligned elements. */
+	.widget {
+		border-left: 0;
+		border-right-width: $border-width__widget;
+		border-right-style: solid;
+	}
+
+}
+
+/*
+ * Sidebar toggle buttons.
+ * 1. Overlay the main .site container.
+ * 2. Compensate for toggle-outer padding, so the button still aligns with the
+ *    bottom of the masthead.
+ */
+.menu-toggle,
+.search-toggle {
+	@include font-size( "normal" );
+	@include rem( "top", ( $height__rule ) );
+	@include rem( "height", $width__menu-toggle );
+	@include rem( "padding-top", $line );
+	@include rem( "line-height", $width__menu-toggle );
+	position: fixed;
+	z-index: 10; /* 1 */
+	display: block;
+	margin-top: -0.5em; /* 2 */
+	margin-bottom: -0.5em; /* 2 */
+	padding-right: 0;
+	padding-left: 0;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	text-shadow: none;
+	background: transparent;
+	font-weight: $font-weight__serif__bold;
+	font-family: $font-family__button;
+	letter-spacing: $letter-spacing__caps;
+	text-align: center;
+	text-transform: uppercase;
+	color: $color__menu-toggle;
+	outline: 0;
+
+	/* Same transition duration as links. */
+	&,
+	&:hover {
+		transition: $transition-time__link color $transition-type;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__menu-toggle-hover;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: none;
+		text-shadow: none;
+	}
+
+}
+
+.menu-toggle-outer,
+.search-toggle-outer {
+	@include rem( "line-height", ( $width__menu-toggle - $line ) );
+	display: inline-block;
+	padding: 0 0.5em;
+}
+
+.menu-toggle {
+	@include rem( "left", $width__menu-toggle );
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+    transition: $transition-time__menu left $transition-type,
+    	0 opacity linear $transition-time__menu; /* Delay on show, to wait for main page to slide back over. */
+
+}
+
+.search-toggle {
+	@include rem( "right", $width__menu-toggle );
+	transform: rotate(-90deg);
+	transform-origin: right top 0;
+    transition: $transition-time__menu right $transition-type,
+    	0 opacity linear $transition-time__menu; /* Delay on show, to wait for main page to slide back over. */
+}
+
+
+/* Menu area is open. */
+.menu-left-toggled {
+
+	/* Shift the page over. */
+	.site {
+		position: relative;
+		transform: translate3d( cj-calculate-rem-fallback( $width__menu ), 0, 0 );
+		transform: translate3d( $width__menu, 0, 0 );
+	}
+
+	.menu-toggle {
+		@include rem( "left", ( $width__menu + $width__menu-toggle ) );
+		color: $color__menu-toggle-hover;
+	}
+
+	/* Show the navigation elements. */
+	.main-navigation-wrapper {
+		display: block;
+	}
+
+	/* Hide the Search toggle button, it's unusable until we close this menu. */
+	.search-toggle {
+		opacity: 0;
+		transition: none;
+	}
+
+}
+
+/* Search area is open. */
+.menu-right-toggled {
+
+	/* Shift the page over. */
+	.site {
+		position: relative;
+		transform: translate3d( cj-calculate-rem-fallback( ( -1 * $width__menu ) ), 0, 0 );
+		transform: translate3d( ( -1 * $width__menu ), 0, 0 );
+	}
+
+	.search-toggle {
+		@include rem( "right", ( $width__menu + $width__menu-toggle ) );
+		color: $color__menu-toggle-hover;
+	}
+
+	/* Show the search elements. */
+	.main-search-wrapper {
+		display: block;
+	}
+
+	/* Hide the Menu toggle button, it's unusable until we close this menu. */
+	.menu-toggle {
+		opacity: 0;
+		transition: none;
+	}
+
+}
+
+.site-logo-link {
+	@include rem( "margin-top", $line );
+}
+
+.menu-item-yorklife a {
+	color: $color__yorklife;
+}
+
+.menu-item-open-minds a {
+	color: $color__openminds;
+}
+
+.menu-item-centre-stage a {
+	color: $color__centrestage;
+}
+
+.menu-item-all-about-yu a {
+	color: $color__allaboutyu;
+}
+
+.menu-item-back-page a {
+	color: $color__backpage;
+}
+
+
+/* Admin bar is being displayed, so move position-fixed elements down. */
+.admin-bar {
+
+	.main-navigation-wrapper,
+	.main-search-wrapper {
+		top: 32px;
+	}
+
+	.menu-toggle,
+	.search-toggle {
+		@include rem( "top", 32px + ( $text-size__px * ( $height__masthead / 1rem ) ) );
+	}
+
+	@media screen and ( max-width: 782px ) {
+
+		.main-navigation-wrapper,
+		.main-search-wrapper {
+			top: 46px;
+		}
+
+		.menu-toggle,
+		.search-toggle {
+			@include rem( "top", 46px + ( $text-size__px * ( $height__masthead / 1rem ) ) );
+		}
+
+	}
+
+}
+
+/* Fallback menu at bottom of page, for when the JS-dependent sidebars are inaccessible. */
+.backup-menu {
+	color: $white;
+	background: $black;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+	}
+
+	li {
+		@include rem("margin", ($line * 0.25) 0);
+		@include rem("padding", 0 $gutter);
+		display: inline-block;
+	}
+
+	a {
+		@include font-size-line("smaller");
+		color: $white;
+		border-bottom-color: transparent;
+		text-transform: uppercase;
+		font-family: $font-family__button;
+		font-weight: $font-weight__serif__bold;
+
+		&:hover,
+		&:focus {
+			color: $color__link-hover__reversed;
+			border-bottom-color: $color__link-hover__reversed;
+		}
+
+	}
+
+}
+
+.js .js-hidden-menu-wrap {
+	display: none;
+}
+
+
+/* Space out the toggle buttons more for wider screens */
+@include media( "main-spacing" ) {
+
+	.menu-toggle,
+	.search-toggle {
+		@include rem( "top", ( $height__masthead + $height__rule ) );
+		@include rem( "padding-top", ( $line / 2 ) );
+	}
+
+	.menu-toggle-inner,
+	.search-toggle-inner {
+		@include rem( "padding-bottom", ( $line / 4 ) );
+		@include rem( "border-bottom", $border-width__widget solid );
+	}
+
+}

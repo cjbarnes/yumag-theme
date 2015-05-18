@@ -1,0 +1,442 @@
+.category-centre-stage {
+
+	.entry-content a,
+	.posted-on a,
+	.related-posts & .cat-links a {
+		color: $color__centrestage__darker;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+	.quote-source {
+		color: $color__centrestage__darker;
+	}
+
+	.site-title-term.category-link {
+		color: $color__centrestage__dark;
+	}
+
+	.entry-title,
+	.entry-subtitle,
+	h3,
+	h4,
+	h5,
+	h6 {
+		letter-spacing: normal;
+		font-family: $font-family__main;
+	}
+
+	/* Yellow square behind first letter of subheading. */
+	.entry-content h3:before {
+		content: '';
+		display: inline-block;
+		height: 2em;
+		width: 2em;
+		margin-top: -1em;
+		margin-left: -1.5rem;
+		margin-right: -1em;
+		background: $color__centrestage;
+	}
+
+	.category-title,
+	.category-title a,
+	.related-posts & .entry-subtitle {
+		color: $black;
+	}
+
+	.category-description,
+	.category-archive-link a {
+		color: $grey__light;
+	}
+
+	.lead {
+		font-style: italic;
+		font-weight: $font-weight__serif;
+	}
+
+	.dropcap {
+		@include rem( "border", ( $line / 2 ) solid $color__centrestage );
+		margin-left: -1.5rem;
+		margin-right: 7px;
+		font-family: $font-family__main;
+		background: $color__centrestage;
+	}
+
+	// Section-specific heading styling (not used in tag/search/author pages.)
+	.single-entry-above-footer,
+	.category-posts,
+	.index-section-posts {
+
+		.entry-title,
+		.entry-subtitle {
+			font-style: italic;
+		}
+
+	}
+
+	hr,
+	&.single-entry .entry-content:before,
+	.category-header {
+		background: $color__centrestage;
+	}
+
+	.call-to-action,
+	.sixty-seconds {
+		border-color: $color__centrestage;
+	}
+
+	.content-details {
+		border-color: $color__centrestage__dark;
+	}
+
+	.footer a {
+		@extend %hide-underline;
+		color: $color__centrestage__darker;
+	}
+
+	.iis-caption {
+		border-right-color: $color__centrestage;
+	}
+
+	.iis-caption .cat-links a,
+	.slider-subtitle {
+		color: $color__centrestage;
+	}
+
+	.textbox,
+	.sixty-seconds,
+	.whats-on {
+		background: $color__centrestage;
+
+		/* Hide the yellow square */
+		h3:before {
+			display: none;
+		}
+
+	}
+
+	.textbox h3,
+	.textbox h4,
+	.textbox h5,
+	.textbox h6 {
+		font-style: italic;
+		text-transform: none;
+	}
+
+}
+
+.category-centre-stage .issue-section-posts {
+
+	.entry-title {
+		@include font-size-line( "huge" );
+	}
+
+	@include media( "issue-2-columns" ) {
+
+		.entry {
+			width: 50%;
+			clear: none;
+			float: left;
+
+		}
+
+		.issue-section-noflex {
+
+			.entry {
+				clear: none;
+
+				&:nth-child(2n+1) {
+					clear: left;
+				}
+
+			}
+
+		}
+
+		.issue-section-flex > div:first-of-type .entry:nth-child(2n),
+		.issue-section-flex > .issue-section-odd-contents + div .entry:nth-child(2n+1),
+		.issue-section-flex > .issue-section-even-contents + div .entry:nth-child(2n) {
+			clear: left;
+		}
+
+		/*
+		 * The flex containers have been added, but it isn't wide enough for a
+		 * flexbox layout yet.
+		 */
+		.issue-section-flex {
+
+			> div {
+				width: 100%;
+			}
+
+		}
+
+	}
+
+	@include media( "issue-4-columns" ) {
+		max-width: 100%; // firefox fix
+
+		.entry {
+
+			@include quantity-query( 3, "greater" ) {
+
+				&:nth-child(n+2) {
+					@include rem( "padding-bottom", ( $line * 0.5 ) );
+
+					.entry-title {
+						@include font-size-line( "large" );
+					}
+
+					.entry-meta {
+						@include font-size-line( "smaller" );
+					}
+
+				}
+
+			}
+
+		}
+
+		.entry-image {
+			@include rem( "padding-top", ( $line * 0.5 ) );
+		}
+
+		// Styles localized to non-flexbox layout.
+		.issue-section-noflex {
+
+			.entry {
+				float: right;
+				max-width: 25%;
+
+				/* Override 2-col layout */
+				&,
+				&:nth-child(2n+1) {
+					clear: none;
+				}
+
+				/* Start new rows for article 4, 6, 10, 14 etc */
+				&:nth-child(4),
+				&:nth-child(4n+10) {
+					clear: right;
+				}
+				&:nth-child(6) {
+					clear: both;
+				}
+
+				// Largest (featured) article.
+				&:first-child {
+					float: left;
+					max-width: 50%;
+					margin-bottom: 0;
+
+					.entry-image {
+						width: 100%;
+						padding-top: 0;
+					}
+
+					.entry-title {
+						@include rem( "margin-bottom", ( $line * 0.5 ) );
+						@include font-size-line( "enormous", 1.5 );
+						text-align: center;
+					}
+
+					.entry-subtitle {
+						@include font-size-line( "larger" );
+					}
+
+					.entry-content {
+						display: block;
+					}
+
+				}
+
+			}
+
+			.entry-content {
+				display: none;
+			}
+
+		}
+
+		// Flexbox version, using wrapper elements added in javascript.
+		.issue-section-flex {
+			display: flex;
+			max-width: 100%; // firefox fix
+
+			.entry {
+				clear: none;
+				float: none;
+				width: auto;
+			}
+
+			.entry-content {
+				@include rem( "margin-top", ( $line * 0.5 ) );
+				@include font-size-line( "small" );
+				display: block;
+				margin-bottom: 0;
+			}
+
+			// Largest (featured) article.
+			> .entry:first-child {
+				flex: 2 0 50%;
+				order: 2;
+				max-width: 50%;
+				margin-bottom: 0;
+
+				.entry-image {
+					padding-top: 0;
+
+					img {
+						width: 100%;
+					}
+
+				}
+
+				.entry-content {
+					@include font-size-line("normal");
+					text-align: center;
+				}
+
+				.entry-title,
+				.entry-subtitle,
+				.entry-meta,
+				.entry-content {
+					@include rem( "padding", 0 ( $spacing * 0.5 ) );
+					text-align: center;
+				}
+
+				.entry-title {
+					@include rem( "margin-bottom", ( $line * 0.5 ) );
+					@include font-size-line( "enormous", 1.5 );
+					text-align: center;
+				}
+
+				.entry-subtitle {
+					@include font-size-line( "larger" );
+				}
+
+				.entry-meta {
+					@include rem( "margin-top", ( $line * 0.5 ) );
+					@include font-size-line( "small" );
+				}
+
+			}
+
+			// Both sidebars.
+			> :nth-child(n+2) {
+				@include rem("padding", $gutter 0);
+				//flex: 1 1 25%;
+				width: 25%;
+				background: $color__centrestage;
+
+				.entry {
+					width: 100%;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					.entry-image {
+						padding-top: 0;
+					}
+
+					@include quantity-query( 2, "greater" ) {
+						// If there's 2 articles in the column, save space by
+						// hiding the excerpt.
+						.entry-content {
+							display: none;
+						}
+
+					}
+
+					@include quantity-query( 3, "greater" ) {
+
+						// If there's 3 articles, save more space by hiding the
+						// image.
+						&:nth-child(n+3) {
+							&:before {
+								@include rem("margin-top", ($line * -0.5));
+								@include rem("margin-bottom", $line);
+								content: '';
+								display: block;
+								width: 50%;
+								height: 2px;
+								background: $black;
+							}
+
+							.entry-image {
+								display: none;
+							}
+
+						}
+
+					}
+
+					@include quantity-query( 4, "greater" ) {
+
+						&:nth-child(2) {
+
+							&:before {
+								@include rem("margin-top", ($line * -0.5));
+								@include rem("margin-bottom", $line);
+								content: '';
+								display: block;
+								width: 50%;
+								height: 2px;
+								background: $black;
+							}
+
+							.entry-image {
+								display: none;
+							}
+						}
+
+					}
+
+					@include quantity-query( 5, "greater" ) {
+
+						&:nth-child(1) {
+
+							&:before {
+								@include rem("margin-top", ($line * -0.5));
+								@include rem("margin-bottom", $line);
+								content: '';
+								display: block;
+								width: 50%;
+								height: 2px;
+								background: $black;
+							}
+
+							.entry-image {
+								display: none;
+							}
+						}
+
+					}
+
+				}
+
+
+			}
+
+			// Left sidebar.
+			> :nth-child(2) {
+				order: 1;
+			}
+
+			// Right sidebar.
+			> :nth-child(3) {
+				order: 3;
+			}
+
+		}
+
+
+	}
+
+}

@@ -1,0 +1,413 @@
+.category-open-minds {
+
+	.category-title,
+	.category-title a,
+	.site-title-term.category-link,
+	.lead,
+	.entry-subtitle,
+	.entry-content a,
+	.posted-on a,
+	.quote-source,
+	.related-posts & .entry-subtitle,
+	.related-posts & .cat-links a {
+		color: $color__openminds__dark;
+	}
+
+	.entry-content,
+	.posted-on,
+	.related-posts & .cat-links {
+
+		a:hover,
+		a:focus,
+		a:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+	.entry-title,
+	.entry-subtitle,
+	h3,
+	h4,
+	h5,
+	h6 {
+		letter-spacing: normal;
+		font-family: $font-family__main;
+	}
+
+	/* Blue square beside subheading. */
+	.entry-content h3:before {
+		content: '';
+		display: inline-block;
+		height: 1em;
+		width: 1em;
+		margin-left: -1.5em;
+		margin-right: 0.5em;
+		background: $color__openminds;
+	}
+
+	hr,
+	.single-entry-above-footer .entry-content:before,
+	.category-header {
+		background: $color__openminds;
+	}
+
+	.call-to-action,
+	.content-details {
+		border-color: $color__openminds;
+	}
+
+	.footer a {
+		@extend %hide-underline;
+		color: $color__openminds__darker;
+	}
+
+	.iis-caption {
+		border-right-color: $color__openminds;
+	}
+
+	.iis-caption .cat-links a,
+	.slider-subtitle,
+	.dropcap {
+		color: $color__openminds;
+	}
+
+	.textbox,
+	.sixty-seconds,
+	.whats-on {
+		background: $color__openminds;
+
+		/* Hide the blue square */
+		h3:before {
+			display: none;
+		}
+
+	}
+
+	.textbox {
+		color: $white;
+	}
+
+	@include media( "main-spacing" ) {
+
+		/* This dropcap style doesn't work on mobiles. */
+		.dropcap {
+			@include rem( "border-width", ( $line * 0.5 ) ( $line * 0.75 ) );
+			margin-right: 7px;
+			font-family: $font-family__main;
+			border-color: $color__openminds;
+			border-style: solid;
+			background: $color__openminds;
+			color: $white;
+		}
+
+	}
+
+}
+
+.category-open-minds .issue-section-posts {
+
+	.entry-title {
+		@include font-size-line( "larger" );
+
+	}
+
+	.entry-content {
+		display: none;
+	}
+
+	@include media( "issue-2-columns" ) {
+
+		.entry {
+			width: 50%;
+			clear: none;
+			float: left;
+		}
+
+		/* Float-clearing for every other article */
+		.issue-section-flex > div .entry:nth-child(2n),
+		.issue-section-leftovers .entry:nth-child(2n+1) {
+			clear: left;
+		}
+
+		.issue-section-noflex {
+
+			.entry {
+				clear: none;
+
+				&:nth-child(2n+1) {
+					clear: left;
+				}
+
+			}
+
+		}
+
+		/*
+		 * The flex containers have been added, but it isn't wide enough for a
+		 * flexbox layout yet.
+		 */
+		.issue-section-flex {
+
+			/* First article. */
+			> .entry {
+
+				.entry-header {
+					background: $color__main;
+				}
+
+				/* Leave space around the text, so it isn't flush to the left edge of the first article's black background */
+				.entry-title,
+				.entry-subtitle,
+				.entry-meta {
+					@include rem( "padding-left", $gutter );
+					@include rem( "padding-right", $gutter );
+				}
+
+				.entry-title {
+					color: $white;
+				}
+
+				.entry-subtitle,
+				.entry-meta {
+					color: $color__openminds;
+
+					a {
+						color: $color__openminds;
+					}
+
+				}
+
+			}
+
+			> div {
+				width: 100%;
+			}
+
+		}
+
+	}
+
+	@include media( "issue-4-columns" ) {
+
+		.entry {
+			max-width: 50%;
+
+			.entry-image {
+				float: left;
+				width: 37.5%;
+				margin-bottom: 0;
+
+				img {
+					width: 100%;
+				}
+
+			}
+
+			.entry-title,
+			.entry-subtitle,
+			.entry-meta,
+			.entry-content {
+				clear: none;
+				margin-left: 41.66667%;
+			}
+
+			.entry-title {
+				@include font-size-line( "large" );
+			}
+
+			.entry-subtitle {
+				@include font-size-line( "normal", 0.75 );
+			}
+
+			.entry-meta {
+				@include font-size-line( "smaller", 0.75 );
+			}
+
+		}
+
+		// Styles localized to non-flexbox layout.
+		.issue-section-noflex {
+
+			.entry {
+				float: right;
+				max-width: 50%;
+
+				/* Override 2-col flexbox clearing */
+				&,
+				&:nth-child(2n+1) {
+					clear: right;
+				}
+
+				&:first-child {
+					float: left;
+					margin-bottom: 0;
+					max-width: 100%;
+
+					.entry-header {
+						@include rem( "padding-bottom", ( $line * 0.5 ) );
+						background: $color__main;
+					}
+
+					.entry-image {
+						width: 100%;
+						margin-right: 0;
+					}
+
+					.entry-title,
+					.entry-subtitle,
+					.entry-meta {
+						@include rem( "padding", 0 ( $spacing * 0.5 ) );
+						margin-left: 0;
+					}
+
+					.entry-title {
+						@include rem( "padding-top", ( $line * 0.5 ) );
+						@include font-size-line( "huge" );
+						clear: left;
+						color: $white;
+					}
+
+					.entry-subtitle {
+						@include font-size-line( "larger" );
+						color: $color__openminds;
+					}
+
+					.entry-meta {
+						@include rem( "margin-top", ( $line * 0.5 ) );
+						@include font-size-line( "small" );
+						color: $color__openminds;
+					}
+
+				}
+
+			}
+
+		}
+
+		// Flexbox version, using wrapper elements added in javascript.
+		.issue-section-flex {
+			display: flex;
+			/* Fix for IE11 flexbox size */
+			width: 100%;
+
+			.entry {
+				clear: none;
+				float: none;
+				width: auto;
+			}
+
+			.entry-content {
+				@include font-size-line( "small" );
+				margin-bottom: 0;
+			}
+
+			// Largest (featured) article.
+			// 1. Apply gutter using margins instead of padding, so the
+			//    entry-image can be flush left/right with the background
+			//    colour.
+			> .entry:first-child {
+				@include rem( "margin-right", ( $gutter * 2 ) ); //* 1 */
+				flex: 1 1 50%;
+				max-width: 50%;
+				margin-bottom: 0;
+				padding-right: 0; //* 1 */
+				padding-left: 0; //* 1 */
+
+				.entry-image {
+					width: 100%;
+					margin-right: 0;
+				}
+
+				.entry-header {
+					@include rem( "padding-bottom", ( $line * 0.5 ) );
+				}
+
+				.entry-title,
+				.entry-subtitle,
+				.entry-meta {
+					@include rem( "padding", 0 ( $spacing * 0.5 ) );
+					margin-left: 0;
+					text-align: center;
+				}
+
+				.entry-title {
+					@include rem( "padding-top", ( $line * 0.5 ) );
+					@include font-size-line( "huge" );
+					clear: left;
+				}
+
+				.entry-subtitle {
+					@include rem("margin-top", ($line * 0.5));
+					@include font-size-line( "larger" );
+				}
+
+				.entry-meta {
+					@include rem( "margin-top", ( $line * 0.5 ) );
+					@include font-size-line( "small" );
+				}
+
+			}
+
+			// Sidebar. Both a flexbox item (horizontal) and a flexbox
+			// container (vertical).
+			> div {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				flex: 1 1 50%;
+				max-width: 50%;
+
+				.entry {
+					width: 100%;
+					max-width: 100%;
+					min-height: 0;
+					margin-bottom: 0;
+					padding-left: 0; // for alignment with the centre gutter.
+					flex: 0 1 auto;
+
+					.entry-image {
+						line-height: 0.5; /* fix for excess space under the image */
+					}
+
+					@include quantity-query( 3, "greater" ) {
+						// If there's 3 articles, save more space by hiding the
+						// content.
+						.entry-content {
+							display: none;
+						}
+					}
+
+				}
+
+				.entry-content {
+					display: block;
+
+					p {
+						margin-bottom: 0; /* for alignment with bottom of flex container */
+					}
+
+				}
+
+			}
+
+		}
+
+		.issue-section-leftovers {
+			@include rem("margin-top", ($line * 1.5));
+			width: 100%;
+
+			.entry {
+				float: left;
+
+				&:nth-child(2n+1) {
+					clear: left;
+				}
+
+			}
+
+		}
+
+	}
+
+}

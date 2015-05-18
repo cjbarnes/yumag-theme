@@ -1,0 +1,51 @@
+/* Post- or widget-title level of heading. */
+h1,
+h2 {
+	clear: both;
+	text-align: center;
+}
+
+h1 {
+	@include rem( "margin", ( $line * 2 ) 0 );
+	@include font-size-line( "gigantic", 2 );
+}
+
+h2 {
+	@include rem( "margin", ( $line * 2 ) 0 $line );
+	@include font-size-line( "enormous", 1.5 );
+}
+
+
+/* Subheadings within content. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-family__heading;
+	font-weight: $font-weight__serif__bold;
+	text-transform: uppercase;
+}
+
+h3 {
+	@include rem( "margin", ( $line * 2 ) 0 $line );
+	@include font-size-line( "larger" );
+}
+
+h4 {
+	@include rem( "margin", ( $line * 1.5 ) 0 $line );
+	@include font-size-line( "large" );
+}
+
+h5 {
+	@include rem( "margin", ( $line * 1.5 )  0 $line );
+	@include font-size-line( "large" );
+	text-transform: none;
+}
+
+h6 {
+	@include rem( "margin", $line 0 ( $line * 0.5 ) );
+	@include font-size-line( "normal" );
+	text-transform: none;
+}

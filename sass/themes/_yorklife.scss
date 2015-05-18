@@ -1,0 +1,64 @@
+.category-yorklife {
+
+	.category-title,
+	.category-title a,
+	.site-title-term.category-link,
+	.entry-content a,
+	.posted-on a,
+	.dropcap,
+	.related-posts & .cat-links a {
+		color: $color__yorklife__dark;
+	}
+
+	.entry-content,
+	.posted-on,
+	.related-posts & .cat-links {
+
+		a:hover,
+		a:focus,
+		a:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+	.related-posts & .entry-subtitle {
+		color: $black;
+	}
+
+	.dropcap {
+		font-family: $font-family__main;
+	}
+
+	// Section-specific heading styling (not used in tag/search/author pages.)
+	.single-entry-above-footer,
+	.category-posts,
+	.issue-section-posts {
+
+		.entry-title {
+			font-family: $font-family__sans-serif;
+		}
+
+	}
+
+	.category-header {
+		background: $color__yorklife;
+	}
+
+	.footer a {
+		@extend %hide-underline;
+		color: $color__yorklife__darker;
+	}
+
+	.iis-caption {
+		border-right-color: $color__yorklife;
+	}
+
+	.iis-caption .cat-links a,
+	.slider-subtitle {
+		color: $color__yorklife;
+	}
+
+	@include issue-section-multicolumn-layout;
+
+}

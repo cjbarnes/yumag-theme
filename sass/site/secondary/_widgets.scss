@@ -1,0 +1,55 @@
+.widget {
+	@include rem( "margin", ( $spacing * 2) 0 );
+	@include rem( "padding", 0 $padding__widget );
+	@include rem( "border-left", $border-width__widget solid );
+	border-color: $color__yorklife;
+
+	.category-open-minds & {
+		border-color: $color__openminds;
+	}
+	.category-centre-stage & {
+		border-color: $color__centrestage;
+	}
+	.category-all-about-yu & {
+		border-color: $color__allaboutyu;
+	}
+	.category-back-page & {
+		border-color: $color__backpage;
+	}
+
+	/* Links. */
+	&,
+	a {
+		font-family: $font-family__widget;
+	}
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+
+}
+
+/* Widget titles. */
+.widget-title {
+	@include font-size-line( "larger" );
+	margin-top: 0;
+	text-align: left;
+	font-weight: $font-weight__serif;
+	font-family: $font-family__main;
+	text-transform: none;
+}
+
+/* Search widget. */
+.widget_search {
+
+	.search-field {
+		width: 100%;
+		border-radius: 0;
+	}
+
+	.search-submit {
+		display: none;
+	}
+
+}

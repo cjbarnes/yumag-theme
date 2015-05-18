@@ -1,0 +1,68 @@
+$size__site-main: 100%;
+$size__site-sidebar: 25%;
+
+// Grid
+// -------------------------------------------------------------
+
+// Standard columns
+$columns: 12;
+$gutter-width: ( 1px * $vertical-rhythm );
+$gutter: ( $gutter-width / 2 );
+$body-width-maximum: 1400px;
+
+// Variables used by grid mixins
+$gutter_width: $gutter-width;
+$max_width: $body-width-maximum;
+
+// Margins
+// -------------------------------------------------------------
+
+$spacing: ( 1px * $vertical-rhythm );
+
+// Misc
+// -------------------------------------------------------------
+
+$border-width__widget: ( $line / 2 );
+$padding__widget: $border-width__widget;
+
+$border-radius: 3px;
+
+$avatar-diameter: 96px;
+
+$width__icon: 112px;
+$height__icon: 104px;
+$height__icon-rule: 4px;
+
+$height__masthead: ( $line * 7 );
+$height__masthead__mini: ( $line * 4 );
+$width__menu: ( $line * 10 );
+$width__menu-toggle: ( $line * 3 );
+
+$width__slider-caption: $width__menu;
+$width__slider-caption__wide: ( $line * 15 );
+$width__slider-caption__wider: ( $line * 19.5 );
+
+$width__rule: 25%;
+$height__rule: ( $line / 2 );
+
+$width__half-image: 336px;
+
+// Media queries
+// -------------------------------------------------------------
+
+// Map of min-width-based breakpoints. Always use semantic keys that describe
+// how the site adapts at that breakpoint, to make code reading easier.
+$breakpoints: (
+	"issue-2-columns"      :  500px,
+	"wide-content-column"  :  600px,
+	"main-spacing"         :  720px,
+	"main-spacing-1"       :  800px,
+	"issue-3-columns"      :  900px,
+	"main-spacing-2"       : 1020px,
+	"wide-slider"          : 1085px,
+	"issue-4-columns"      : 1100px,
+	"images-in-margin"     : 1120px,
+	"main-spacing-3"       : 1160px,
+	"wider-slider"         : 1280px,
+	"beyond-max-width"     : $body-width-maximum
+);

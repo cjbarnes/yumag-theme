@@ -1,0 +1,21 @@
+/// Make an element self-clearing.
+///
+/// See {@link http://nicolasgallagher.com/micro-clearfix-hack/}
+///
+/// @author cJ barnes http://wwww.cjbarnes.co.uk/
+///
+/// @output Pseudoelements that apply the micro-clearfix hack.
+@mixin clearfix {
+	*zoom: 1;
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+}

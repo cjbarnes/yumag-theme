@@ -1,0 +1,229 @@
+//
+// The basic page structure:
+//
+// body[BODY CLASSES]
+//   a.skip-link
+//   #site-navigation.main-navigation.js-menu-area
+//   #site-search.main-search.js-menu-area
+//   #page.site
+//       [ROW] #masthead.site-header
+//           [COLUMN 12] .site-branding
+//               h1.site-title
+//               h2.site-description
+//       #content.site-content
+//           #primary.content-area
+//               main#main.site-main
+//                   header.above-single-header
+//                       .archive-header.issue-header
+//  ############################################################################
+//  #                section.issue-section.category-section
+//  #                    .category-header.issue-section-header
+//  #                        h2.category-title.issue-section-title
+//  #                    [COLUMN 12/10] .category-content.index-content.issue-section-content
+//  #                        .category-posts.index-posts.issue-section-posts
+//  #                            article.entry[POST CLASSES]
+//  #                                [...]
+//  ############################################################################
+//                    article.entry[POST CLASSES]
+//                       [ROW] .entry-above-footer
+//                           [COLUMN x/10/8] .entry-image
+//                           [COLUMN 12/10/8] .entry-header
+//                               a.entry-title-link
+//                                   h1.entry-title
+//                                   h2.entry-subtitle
+//                               .entry-meta
+//                               	.byline
+//                           [COLUMN 12/10/8/6] .entry-content
+//                               [CONTENT]
+//                       .related-posts-wrap
+//                           [ROW] .related-posts
+//                               [COLUMN 12/10] .index-content
+//                                   .index-posts
+//                       .footer.entry-footer-wrap
+//                           [ROW] .entry-footer
+//                               [COLUMN 12/10/8/6] .entry-author
+//                               [COLUMN 12/10/8/6] .posted-on
+//                               [COLUMN 12/10/8/6] .tags-links
+//                   [ROW] #comments.comments-footer
+//                       [COLUMN 12/10] .comments-area
+//                           h2.comments-title
+//                           [NESTED-ROW] #comment-nav-above.comment-navigation
+//                           	[COLUMN 12/5] .nav-previous
+//                           	[COLUMN 12/5] .nav-next
+//                           [NESTED-ROW] ol.comment-list
+//                           	[COLUMN 12/10/5] li.comment
+//                           		article.comment-body
+//                           			footer.comment-meta
+//                           				.comment-author.vcard
+//                           			.comment-content
+//                           			.reply
+//                           				.comment-reply-link
+//                           [NESTED-ROW] #comment-nav-below.comment-navigation
+//                           	[COLUMN 12/5] .nav-previous
+//                           	[COLUMN 12/5] .nav-next
+//                           #respond.comment-respond
+//           [ROW] #secondary.widget-area.footer-widget-area
+//               [COLUMN 12/6/4] [WIDGETS]
+//           #tertiary.footer.site-footer
+//               [ROW] .footer-row.site-footer-row
+//               [COLUMN 12] .site-footer-content
+
+.site-header,
+.single-entry-above-footer,
+.related-posts,
+.entry-footer-wrap .entry-footer,
+.comments-footer,
+.footer-widget-area,
+.footer-row,
+.next-prev-wrap .posts-navigation {
+	@include row;
+}
+
+.comment-navigation,
+.comment-list {
+	@include nested-row;
+}
+
+
+/* Columns that are full-width for mobiles. */
+.site-branding,
+.site-footer-content {
+	@include column(12);
+}
+
+/*
+ * Leave a column free on either side of most content, for the Menu and
+ * Search toggles.
+ */
+.search-results-search,
+.index-content,
+.author-bio-content,
+.slider,
+.single-entry-above-footer .entry-image,
+.single-entry-above-footer .entry-header,
+.single-entry-above-footer .entry-content,
+.single-entry-footer .entry-author,
+.single-entry-footer .posted-on,
+.single-entry-footer .tags-links,
+.nav-links,
+.comments-area {
+	@include column(10);
+	@include push;
+	@include pull;
+}
+
+/* Nested single column. */
+.comment {
+	@include column(10, $padding, 10);
+}
+
+@include media( "main-spacing-1" ) {
+
+	/* Narrower content column than everything else, for better line length. */
+	.author-bio-content,
+	.single-entry-above-footer .entry-content,
+	.single-entry-footer .entry-author,
+	.single-entry-footer .posted-on,
+	.nav-links,
+	.single-entry-footer .tags-links {
+		@include column(8);
+		@include push(2);
+		@include pull(2);
+	}
+
+}
+
+@include media( "main-spacing-2" ) {
+
+	/* Narrower heading area. */
+	.single-entry-above-footer .entry-image,
+	.single-entry-above-footer .entry-header {
+		@include column(8);
+		@include push(2);
+		@include pull(2);
+	}
+
+	/* Even narrower content column, to maintain sensible line length. */
+	.author-bio-content,
+	.single-entry-above-footer .entry-content,
+	.single-entry-footer .entry-author,
+	.single-entry-footer .posted-on,
+	.nav-links,
+	.single-entry-footer .tags-links {
+		@include column(6);
+		@include push(3);
+		@include pull(3);
+	}
+
+	/* Side-by-side comments. */
+	.comment {
+		@include column(5, $padding, 10);
+	}
+
+	/* Left-aligned single post layout. */
+	.template-fixed-left,
+	.template-scrolling-left {
+
+		.single-entry-above-footer .entry-image {
+			@include column(4);
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.single-entry-above-footer .entry-header,
+		.single-entry-above-footer .entry-content {
+			@include column(6);
+			@include pull;
+			@include push(5);
+		}
+
+	}
+
+	/* Right-aligned single post layout. */
+	.template-fixed-right,
+	.template-scrolling-right {
+
+		.single-entry-above-footer .entry-image {
+			@include column(4);
+			margin-right: 0;
+			margin-left: 0;
+		}
+
+		.single-entry-above-footer .entry-header,
+		.single-entry-above-footer .entry-content {
+			@include column(6);
+			@include pull(5);
+			@include push;
+		}
+
+	}
+
+}
+
+@include media( "main-spacing-3" ) {
+
+	.template-fixed-left,
+	.template-scrolling-left {
+
+		.single-entry-above-footer .entry-header,
+		.single-entry-above-footer .entry-content {
+			@include column(5);
+			@include pull;
+			@include push(6);
+		}
+
+	}
+
+	.template-fixed-right,
+	.template-scrolling-right {
+
+		.single-entry-above-footer .entry-header,
+		.single-entry-above-footer .entry-content {
+			@include column(5);
+			@include pull(6);
+			@include push;
+		}
+
+	}
+
+}

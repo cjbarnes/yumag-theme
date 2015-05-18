@@ -1,0 +1,251 @@
+.category-header,
+.author-header {
+	@include rem( "margin-bottom", $line );
+	position: relative;
+	overflow: hidden; // hide logo circle overflow
+	height: 160px; // cut off top and bottom of logo circle
+	text-align: center;
+}
+
+.single .category-header,
+.single .author-header {
+	@include rem( "margin-top", $spacing );
+}
+
+.category-title,
+.author-image {
+	//@include rem( "padding", ( $line * 0.5 ) );
+	@include font-size-line( "huger", 1.5 );
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	display: inline-block;
+	margin: -125px 0 0 -125px;
+	font-weight: $font-weight__serif__bold;
+	letter-spacing: $letter-spacing__caps;
+	font-family: $font-family__category;
+	text-align: center;
+	text-transform: uppercase;
+
+	a {
+		border-bottom: 0;
+	}
+
+	img {
+		border-radius: 50%;
+	}
+
+}
+
+/* Left- and right-aligned text underneath the section heading. */
+.category-description,
+.category-archive-link {
+	/* Don't show for mobiles, as the screen isn't wide enough for them. */
+	display: none;
+}
+
+.issue-section {
+	@include rem( "margin-bottom", ( $line * 2 ) );
+
+	+ .issue-section {
+		@include rem( "margin-top", ( $line * 3 ) );
+	}
+
+}
+
+/* Posts list for this section. */
+.index-posts {
+	position: relative;
+	float: left;
+	left: 50%;
+
+	& > div {
+		position: relative;
+		float: left;
+		left: -50%;
+	}
+
+	.entry {
+		@include rem( "margin-bottom", $line )
+	}
+
+	.entry-image {
+		@include rem( "margin-bottom", ( $spacing / 2 ) );
+	}
+
+	.entry-title,
+	.entry-subtitle {
+		@include font-size-line( "normal" );
+		margin: 0;
+		text-align: left;
+	}
+
+	.entry-title {
+		@include font-size-line( "large" );
+		font-family: $font-family__main;
+	}
+
+	.entry-content,
+	.entry-footer {
+		display: none;
+	}
+
+	.entry-meta {
+		@include font-size-line( "smaller" );
+		display: block;
+		text-align: left;
+
+		a {
+			@extend %hide-underline;
+			font-weight: $font-weight__serif;
+			color: $color__main;
+
+			&:hover,
+			&:focus,
+			&:active {
+				color: $color__link-hover;
+			}
+
+		}
+
+	}
+
+	.entry-content p {
+		margin-bottom: 0;
+	}
+
+	.read-more {
+		display: none;
+	}
+
+	@include media( "issue-2-columns" ) {
+
+		.entry {
+			@include rem( "padding", 0 ( $spacing * 0.5 ) );
+
+		}
+
+	}
+
+}
+
+.search-results .index-posts {
+
+	.entry-meta {
+		display: none;
+	}
+
+}
+
+.related-posts-title {
+	@include rem( "margin-top", ( $line * -1 ) );
+	@include font-size-line( "larger" );
+}
+
+.archive:not(.tax-pp_issue) .index-posts,
+.related-posts .index-posts,
+.search-results .index-posts {
+
+	.entry {
+		@include rem( "margin-bottom", $line );
+	}
+
+	.entry-footer {
+		@include rem( "margin", ( $line * 0.5 ) 0 $line );
+		@include font-size-line( "smaller" );
+		display: block;
+		font-family: $font-family__meta;
+	}
+
+	.read-more {
+		display: block;
+	}
+
+	@include media( "issue-2-columns" ) {
+
+		.entry {
+			@include rem( "max-width", ( 333px + ( $spacing * 0.5 ) ) );
+			@include rem( "padding", 0 ( $spacing * 0.5 ) );
+			float: left;
+
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+
+			@include quantity-query( 2, "greater" ) {
+				width: 50%;
+			}
+
+		}
+
+		.entry-content {
+			@include rem( "margin", ( $line * 0.5 ) 0 0 );
+			@include font-size-line( "small" );
+			display: block;
+			text-align: left;
+		}
+
+	}
+
+
+	@include media( "issue-3-columns" ) {
+
+		.entry {
+
+			@include quantity-query( 3, "greater" ) {
+				width: 33%;
+				clear: none;
+
+				&:nth-child(3n+1) {
+					clear: left;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+@include media( "main-spacing" ) {
+
+	/* Left- and right-aligned text underneath the section heading. */
+	.category-description,
+	.category-archive-link {
+		@include rem( "bottom", ( $spacing * 0.5 ) );
+		@include rem( "margin", ( $spacing * 0.5 ) 0 0 );
+		@include rem( "padding", 0 $width__menu-toggle );
+		position: absolute;
+		z-index: 1;
+		display: block;
+		width: 50%;
+		font-weight: $font-weight__serif__bold;
+		font-family: $font-family__category;
+		text-align: center;
+		color: $white;
+	}
+
+	.category-description {
+		left: 0;
+		padding-right: 130px; // half-width of the section logo
+		//text-align: left;
+	}
+
+	.category-archive-link {
+		@include font-size-line( "small" );
+		right: 0;
+		padding-left: 130px; // half-width of the section logo
+		//text-align: right;
+		text-transform: uppercase;
+
+		a {
+			color: inherit;
+			@extend %hide-underline;
+		}
+
+	}
+
+}

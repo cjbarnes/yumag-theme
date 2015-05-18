@@ -1,0 +1,94 @@
+.category-all-about-yu {
+
+	.category-title,
+	.category-title a,
+	.site-title-term.category-link,
+	.dropcap,
+	.entry-subtitle,
+	.entry-content a,
+	.posted-on a,
+	.quote-source,
+	h3,
+	h4,
+	h5,
+	h6,
+	.related-posts & .entry-subtitle,
+	.related-posts & .cat-links a {
+		color: $color__allaboutyu__dark;
+	}
+
+	.entry-content,
+	.posted-on,
+	.related-posts & .cat-links {
+
+		a:hover,
+		a:focus,
+		a:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+	/* Green/black square next to first letter of subheading. */
+	.entry-content h3:before {
+		content: '';
+		display: inline-block;
+		height: 1em;
+		width: 1em;
+		//border-bottom: 0.5em solid $black;
+		//border-radius: 50%;
+		margin-left: -1.5em;
+		margin-right: 0.5em;
+		background: $color__allaboutyu;
+	}
+
+	hr,
+	.single-entry-above-footer .entry-content:before,
+	.category-header,
+	.sixty-seconds {
+		background: $color__allaboutyu;
+	}
+
+	.call-to-action,
+	.content-details {
+		border-color: $color__allaboutyu;
+	}
+
+	.footer a {
+		@extend %hide-underline;
+		color: $color__allaboutyu__darker;
+	}
+
+	.iis-caption {
+		border-right-color: $color__allaboutyu;
+	}
+
+	.iis-caption .cat-links a,
+	.slider-subtitle {
+		color: $color__allaboutyu;
+	}
+
+	.textbox,
+	.sixty-seconds,
+	.whats-on {
+		background: $color__allaboutyu;
+
+		/* The square before the subheading */
+		h3:before {
+			display: none;
+		}
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: $color__main;
+		}
+
+	}
+
+
+	@include issue-section-multicolumn-layout;
+
+}
+

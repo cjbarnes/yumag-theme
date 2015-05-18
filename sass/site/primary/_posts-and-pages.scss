@@ -1,0 +1,189 @@
+.sticky {
+	display: block;
+}
+
+.single-entry-above-footer {
+
+	.entry-image {
+		@include rem( "margin-bottom", ( $line * 0.5 ) );
+		text-align: center;
+
+		img {
+			width: 100%;
+			max-width: 1167px;
+		}
+
+
+		&.no-image {
+			display: none;
+		}
+
+	}
+
+	.entry-meta {
+		@include rem( "padding-bottom", $line ); /* leave space for line below headings */
+	}
+
+	.entry-content {
+
+		&:before {
+			@include rem( "height", ( $height__rule ) );
+			@include rem( "margin", ( $line * 0.5 ) 0 ( $line * 1.5 ) );
+			content: '';
+			top: 0;
+			width: $width__rule;
+			margin-left: ( ( 100% - $width__rule ) / 2 );
+			background: $color__yorklife;
+		}
+
+		p:not(.lead) + p {
+			text-indent: $text-indent;
+		}
+
+		a:hover,
+		a:focus,
+		a:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+}
+
+.related-posts {
+	@include rem( "margin-bottom", ( $line * 2.5 ) );
+}
+
+.entry-image-link {
+
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		border: 0;
+	}
+
+}
+
+.entry-title-link {
+	@extend %hide-underline;
+	color: $color__main;
+}
+
+.entry-title {
+	@include rem( "margin-top", $line );
+	@include font-size-line( "huger", 1.5 );
+	word-wrap: break-word;
+	text-transform: none;
+	font-family: $font-family__main;
+
+	.single-entry-above-footer & {
+		@include rem( "margin-bottom", $line );
+	}
+
+}
+
+.entry-subtitle {
+	@include rem( "margin-top", $line );
+	@include font-size-line( "huge", 1.5 );
+	font-weight: $font-weight__serif;
+	text-transform: none;
+	font-family: $font-family__main;
+}
+
+.updated:not(.published){
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	@include rem( "margin", 0 0 ( $line * 4 ) );
+}
+
+.page-links {
+	@include rem( "margin", 0 0 $line );
+	clear: both;
+}
+
+/* Byline. */
+.entry-meta {
+	text-align: center;
+
+	a {
+		@extend %hide-underline;
+		color: inherit;
+		font-weight: $font-weight__serif__bold;
+	}
+
+}
+
+/* Footer author. */
+.entry-author {
+	font-family: $font-family__meta;
+	text-align: center;
+
+	/* The author's name */
+	a {
+		@extend %hide-underline;
+		font-weight: $font-weight__serif__bold;
+		text-transform: uppercase;
+		letter-spacing: $letter-spacing__caps;
+	}
+
+}
+
+/* Author photos. */
+.avatar {
+	border-radius: 50% 50%;
+}
+
+/* Categories in entry footer. */
+.entry-issue,
+.cat-links a {
+	@extend %hide-underline;
+	font-weight: $font-weight__serif__bold;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing__caps;
+}
+
+.tags-links {
+	display: block;
+
+	a {
+		@extend %hide-underline;
+		font-weight: $font-weight__serif__bold;
+	}
+
+}
+
+/* Post footer meta lines. */
+.posted-on {
+	display: block;
+
+	/* Leave space between posted-on meta and author name/bio. */
+	.single-entry-above-footer & {
+		@include rem( "margin-top", $line * 2 );
+	}
+
+}
+
+/* Read more link. */
+.read-more {
+	@include rem( "margin", ( $line * 0.5 ) 0 $line );
+	font-weight: bold;
+}
+
+
+// Should affect print as well as screen, so don't use mixin
+@media (min-width: map_get( $breakpoints, "main-spacing" ) ) {
+
+	.entry-title {
+		@include font-size-line( "leviathan", 2.5 );
+	}
+
+	.entry-subtitle {
+		@include font-size-line( "enormous", 2 );
+	}
+
+}

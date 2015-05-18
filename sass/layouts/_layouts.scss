@@ -1,0 +1,141 @@
+.template-two-columns .single-entry-above-footer .entry-image {
+	text-align: center;
+
+	/* Prevent featured image from being larger than its natural size. */
+	img {
+		max-width: 474px;
+	}
+
+}
+
+@include media( "wide-content-column" ) {
+
+	/* Switch coloured boxes to left hand side. */
+	.template-scrolling-left .textbox.side {
+		@include rem( "margin-right", $spacing );
+		clear: left;
+		float: left;
+		margin-left: 0;
+	}
+
+}
+
+@include media( "main-spacing-1" ) {
+
+	.template-scrolling-left .textbox.side {
+		left: auto;
+		right: 10%;
+		margin-left: 0;
+		margin-right: -5%;
+		margin-right: calc( -10% + #{$spacing} );
+	}
+
+}
+
+@include media( "main-spacing-2" ) {
+
+	.site-main {
+		position: relative; /* for relative scaling of fixed-position images */
+	}
+
+	.template-two-columns {
+		@include rem( "top", ( $spacing * 1.5 ) );
+
+		.site-header {
+			@include rem( "margin-bottom", $spacing * 2 );
+		}
+
+		.entry-title,
+		.entry-subtitle,
+		.entry-meta {
+			text-align: left;
+		}
+
+		// Align title with top of featured image.
+		.entry-header {
+			margin-top: -0.8em;
+		}
+
+		.entry-title {
+			margin-top: 0;
+		}
+
+		hr,
+		.entry-content:before {
+			margin-left: 0;
+		}
+
+	}
+
+	.template-scrolling-left,
+	.template-scrolling-right {
+
+		.single-entry-above-footer .entry-image {
+			position: absolute;
+		}
+
+	}
+
+	.template-scrolling-left {
+
+		.single-entry-above-footer .entry-image {
+			left: 8.33333%;
+		}
+
+		.size-thumbnail.alignleft {
+			position: relative;
+			left: -150px;
+			margin-right: -150px;
+		}
+
+		.textbox.side {
+			right: 55%;
+			right: calc( 50% + ( #{$spacing} * 2 ) );
+			margin-right: -50%;
+		}
+
+	}
+
+	.template-scrolling-right {
+
+		.single-entry-above-footer .entry-image {
+			right: 8.33333%;
+		}
+
+		.size-thumbnail.alignright {
+			position: relative;
+			right: -150px;
+			margin-left: -150px;
+		}
+
+		.textbox.side {
+			left: 55%;
+			left: calc( 50% + ( #{$spacing} * 2 ) );
+			margin-left: -50%;
+		}
+
+	}
+
+}
+
+@include media( "main-spacing-3" ) {
+
+	// .template-scrolling-left {
+
+	// 	.alignleft {
+	// 		position: absolute;
+	// 		left: 8.33333%;
+	// 	}
+
+	// }
+
+	// .template-scrolling-right {
+
+	// 	.alignright {
+	// 		position: absolute;
+	// 		left: 50%;
+	// 	}
+
+	// }
+
+}

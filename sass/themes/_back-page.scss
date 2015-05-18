@@ -1,0 +1,101 @@
+.category-back-page {
+
+	.category-title,
+	.category-title a,
+	.site-title-term.category-link,
+	.dropcap,
+	.entry-subtitle,
+	.entry-content a,
+	.posted-on a,
+	.quote-source,
+	h3,
+	h4,
+	h5,
+	h6,
+	.related-posts & .entry-subtitle,
+	.related-posts & .cat-links a,
+	.dropcap {
+		color: $color__backpage__dark;
+	}
+
+	.entry-content,
+	.posted-on,
+	.related-posts & .cat-links {
+
+		a:hover,
+		a:focus,
+		a:active {
+			color: $color__link-hover;
+		}
+
+	}
+
+	// Section-specific heading styling (not used in tag/search/author pages.)
+	.single-entry-above-footer,
+	.category-posts,
+	.index-section-posts {
+
+		.entry-title {
+			font-family: $font-family__sans-serif;
+		}
+
+	}
+
+	hr,
+	.single-entry-above-footer .entry-content:before,
+	.category-header,
+	.sixty-seconds {
+		background: $color__backpage;
+	}
+
+	.call-to-action,
+	.content-details {
+		border-color: $color__backpage;
+	}
+
+	.footer a {
+		@extend %hide-underline;
+		color: $color__backpage__darker;
+	}
+
+	.iis-caption {
+		border-right-color: $color__backpage;
+	}
+
+	.iis-caption .cat-links a,
+	.slider-subtitle {
+		color: $color__backpage;
+	}
+
+	.textbox,
+	.sixty-seconds,
+	.whats-on {
+		background: $color__backpage;
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: $color__main;
+		}
+
+	}
+
+	@include media( "main-spacing" ) {
+
+		/* This dropcap style doesn't work on mobiles. */
+		.dropcap {
+			@include rem( "border", ( $line / 2 ) solid $color__backpage__dark );
+			margin-right: 7px;
+			font-style: italic;
+			text-transform: lowercase;
+			font-family: $font-family__main;
+			color: $white;
+			background: $color__backpage__dark;
+		}
+
+	}
+
+	@include issue-section-multicolumn-layout;
+
+}
