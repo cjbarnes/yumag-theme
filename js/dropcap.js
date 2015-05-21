@@ -18,46 +18,49 @@ http://www.apache.org/licenses/LICENSE-2.0.html
 
 	var i,
 		l,
-		p,
-		paragraphs,
+		paragraph,
 		dropcap,
-		pattern = /^(?:(?:<[A-Za-z][^>]*>)*)((?:[\W_-]|&[\w-]+;)?[A-Za-z0-9])/;
+		textNodeId,
+		textNodeContent,
+		matches,
+		pattern = /^([^A-Za-z0-9]*[A-Za-z0-9])(.*)/;
 
-	paragraphs = document.querySelectorAll( '.single-entry .entry-content > p' );
+	paragraph = document.querySelector( '.single-entry .entry-content > p:first-child:not(.lead), .single-entry .entry-content > p.lead:first-child + p' );
 
-	// Find the first content paragraph that isn't a lead/lede.
-	i = 0;
-	l = paragraphs.length;
-	while ( ( i < l ) && ( paragraphs[i].classList.contains( 'lead' ) ) ) {
-		i++;
-	}
-	p = paragraphs[i];
-
-	/**
-	 * Don't dropcap when the article begins with a subheading. Fails on IE8
-	 * (no `Node.previousElementSibling` support) but degrades gracefully - i.e.
-	 * no dropcaps.
-	 *
-	 * Also prevent typeof errors by checking we have chosen a paragraph to
-	 * dropcap in the first place.
-	 */
-	if ( ! p || ( p.previousElementSibling && /^H[1-6]$/.test( p.previousElementSibling.tagName ) ) ) {
+	if ( ! paragraph ) {
 		return;
 	}
 
-	/**
-	 * Don't dropcap paragraphs that contain a script (due to flaws in the WP
-	 * Twitter embed code).
-	 */
-	for ( i = 0, l = p.children.length; i < l; i++ ) {
-		if ( 'SCRIPT' === p.children[ i ].tagName ) {
-			return;
+	// Get first text node of paragraph.
+	textNodeId = -1;
+	for ( i = 0, l = paragraph.childNodes.length; i < l; i++ ) {
+		if ( 3 === paragraph.childNodes[ i ].nodeType ) {
+			textNodeId = i;
+			break;
 		}
 	}
+	if ( -1 === textNodeId ) {
+		return;
+	}
 
-	// Wrap the first letter (and preceding punctuation) in a span.
-	p.innerHTML = p.innerHTML.replace( pattern, '<span class="dropcap">$1</span>' );
-	dropcap = p.querySelector( '.dropcap' );
+	// Split the text node up into dropcap and remainder.
+	textNodeContent = paragraph.childNodes[ textNodeId ].nodeValue;
+	matches = pattern.exec( textNodeContent );
+	if ( ! matches || ! matches.length || 2 > matches.length ) {
+		return;
+	}
+
+	// Create the dropcap span.
+	dropcap = document.createElement( 'span' );
+	dropcap.classList.add( 'dropcap' );
+	dropcap.innerHTML = matches[1];
+
+	// Update the DOM.
+	if ( 'undefined' === typeof matches[2] ) {
+		matches[2] = '';
+	}
+	paragraph.childNodes[ textNodeId ].nodeValue = matches[2];
+	paragraph.insertBefore( dropcap, paragraph.childNodes[ textNodeId ] );
 
 	// Call the dropcaps script.
 	window.Dropcap.layout( dropcap, 3 );
