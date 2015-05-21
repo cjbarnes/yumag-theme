@@ -42,11 +42,6 @@ function write_filters( $hook ) {
 }
 endif;
 
-function init_debug() {
-	//write_filters( 'image_size_names_choose' );
-}
-add_action( 'admin_init', 'init_debug', 1000 );
-
 /**
  * Set the max content width based on the theme's design and stylesheet.
  */
@@ -214,7 +209,7 @@ function yumag_scripts() {
 
 	wp_enqueue_script( 'yumag-skip-link-focus-fix', $src . 'skip-link-focus-fix.js', array(), '20130115', true );
 
-	wp_enqueue_script( 'yumag-dropcap', $src . 'dropcap.js', array(), '20150225', true );
+	wp_enqueue_script( 'yumag-dropcap', $src . 'dropcap.js', array(), '20150521', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
