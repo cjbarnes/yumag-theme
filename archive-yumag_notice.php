@@ -31,7 +31,16 @@ get_header(); ?>
 				</header>
 
 			<?php if ( class_exists( 'YuMag_Plugin_Public' ) && method_exists( 'YuMag_Plugin_Public', 'display_filters' ) ) : ?>
-				<div class="post-filters show-hide" data-summary="Search options">
+				<?php
+				// Check whether any filters have been applied.
+				$open_class = ( isset( $_GET['type'] )
+				|| isset( $_GET['department'] )
+				|| isset( $_GET['college'] )
+				|| isset( $_GET['class-of'] ) )
+					? 'open'
+					: '';
+				?>
+				<div class="post-filters show-hide <?php echo $open_class; ?>" data-summary="Search options">
 					<?php YuMag_Plugin_Public::get_instance( YuMag_Plugin::get_instance() )->display_filters(); ?>
 				</div>
 			<?php endif; ?>

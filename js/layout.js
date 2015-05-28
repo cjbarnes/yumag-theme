@@ -145,7 +145,12 @@
 		summary.addEventListener( 'click', createShowHideClickHandler( container ) );
 
 		// Mark content as hidden. Requires CSS to actually hide the contents.
-		container.classList.add( 'closed' );
+		// Can be overridden by including the class 'open' in the HTML.
+		if ( container.classList.contains( 'open' ) ) {
+			container.classList.remove( 'open' );
+		} else {
+			container.classList.add( 'closed' );
+		}
 
 	}
 
