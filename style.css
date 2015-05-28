@@ -5048,6 +5048,9 @@ object {
 	letter-spacing: 0.05em; 
 	text-transform: uppercase;
 }
+.notice-filter-table .notice-filter-reset {
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
 
 /*--------------------------------------------------------------
 16.0 Browser compatibility
