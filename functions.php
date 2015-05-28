@@ -205,7 +205,7 @@ function yumag_scripts() {
 
 	wp_enqueue_script( 'yumag-navigation', $src . 'navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'yumag-layout', $src . 'layout.js', array(), '20150323', true );
+	wp_enqueue_script( 'yumag-layout', $src . 'layout.js', array(), '20150528', true );
 
 	wp_enqueue_script( 'yumag-skip-link-focus-fix', $src . 'skip-link-focus-fix.js', array(), '20130115', true );
 
