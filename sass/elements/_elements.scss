@@ -97,3 +97,16 @@ figcaption,
 	font-family: $font-family__caption;
 	text-align: center;
 }
+
+/* Show-hide elements */
+.show-hide {
+
+	.show-hide-toggle {
+		display: block;
+	}
+
+	&.closed .show-hide-contents {
+		display: none;
+	}
+
+}

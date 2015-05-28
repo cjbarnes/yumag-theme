@@ -893,6 +893,14 @@ figcaption,
 	text-align: center;
 }
 
+/* Show-hide elements */
+.show-hide .show-hide-toggle {
+	display: block;
+}
+.show-hide.closed .show-hide-contents {
+	display: none;
+}
+
 ul,
 ol {
 	margin: 0 0 28px 28px;

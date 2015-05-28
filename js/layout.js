@@ -90,3 +90,63 @@
 	}
 
 } )();
+
+/**
+ * Initialize the
+ *
+ * @since 1.1.0
+ */
+( function initShowHideBlocks() {
+	'use strict';
+
+	/* 'Cuts the mustard' test. */
+	if ( ! ( 'querySelector' in document ) || ! ( 'addEventListener' in window ) ) {
+		return;
+	}
+
+	function createShowHideClickHandler( container ) {
+		return function showHideClickHandler( e ) {
+			e.preventDefault();
+			if ( container ) {
+				container.classList.toggle( 'closed' );
+			}
+		};
+	}
+
+	var i,
+		l,
+		contents,
+		summary,
+		label = '',
+		showhides = document.querySelectorAll( '.show-hide' );
+
+	// Loop through the containers to be toggleable.
+	for ( i = 0, l = showhides.length; i < l; i++ ) {
+		var container = showhides[ i ];
+
+		// Wrap existing elements in this show-hide in a contents element.
+		contents = document.createElement( 'div' );
+		contents.classList.add( 'show-hide-contents' );
+		while ( 0 < container.childNodes.length ) {
+			contents.appendChild( container.childNodes[0] );
+		}
+		container.appendChild( contents );
+
+		// Add toggle button/heading element.
+		label = container.hasAttribute( 'data-summary' )
+			? container.getAttribute( 'data-summary' )
+			: 'Click to find out more';
+		summary = document.createElement( 'a' );
+		summary.classList.add( 'show-hide-toggle' );
+		summary.appendChild( document.createTextNode( label ) );
+		container.insertBefore( summary, container.firstChild );
+
+		// Setup the events.
+		summary.addEventListener( 'click', createShowHideClickHandler( container ) );
+
+		// Mark content as hidden. Requires CSS to actually hide the contents.
+		container.classList.add( 'closed' );
+
+	}
+
+} )();

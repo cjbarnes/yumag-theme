@@ -19,8 +19,6 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
-
 			<section class="archive-section">
 				<header class="page-header category-header notices-header">
 					<h1 class="taxonomy-title category-title notices-title">
@@ -31,6 +29,15 @@ get_header(); ?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php _e( 'Go to latest issue', 'yumag' ); ?>">Back to latest issue</a>
 						</p>
 				</header>
+
+			<?php if ( class_exists( 'YuMag_Plugin_Public' ) && method_exists( 'YuMag_Plugin_Public', 'display_filters' ) ) : ?>
+				<div class="post-filters show-hide" data-summary="Search options">
+					<?php YuMag_Plugin_Public::get_instance( YuMag_Plugin::get_instance() )->display_filters(); ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( have_posts() ) : ?>
+
 				<div class="index-content">
 					<div class="index-posts">
 						<div>
@@ -60,13 +67,14 @@ get_header(); ?>
 						'screen_reader_text' => __( 'Notices navigation', 'yumag' )
 					) ); ?>
 				</footer><!-- .next-prev-wrap -->
+
+			<?php else : ?>
+
+				<?php get_template_part( 'content', 'none' ); ?>
+
+			<?php endif; ?>
+
 			</section><!-- .archive-section -->
-
-		<?php else : ?>
-
-			<?php get_template_part( 'content', 'none' ); ?>
-
-		<?php endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

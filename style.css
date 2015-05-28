@@ -909,6 +909,14 @@ figcaption,
 	text-align: center;
 }
 
+/* Show-hide elements */
+.show-hide .show-hide-toggle {
+	display: block;
+}
+.show-hide.closed .show-hide-contents {
+	display: none;
+}
+
 ul,
 ol {
 	margin: 0 0 28px 28px;
@@ -4969,6 +4977,76 @@ object {
 .post-type-archive-yumag_notice .entry-image {
 	margin: 14px 0 0;
 	margin: 0.77778rem 0 0;
+}
+
+/* Notices filters container */
+.post-filters {
+	margin: -28px 84px 28px;
+	margin: -1.55556rem 4.66667rem 1.55556rem;
+}
+
+.post-filters .show-hide-toggle {
+	margin-bottom: 14px;
+	margin-bottom: 0.77778rem;
+	padding: 0;
+	font-weight: 700;
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+	text-align: center;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	border-bottom: 0;
+	color: #1960ae;
+	cursor: pointer;
+}
+.post-filters .show-hide-toggle:hover,
+.post-filters .show-hide-toggle:focus {
+	color: #0f3b6b;
+}
+
+.post-filters.closed .show-hide-toggle:before {
+	content: "Click for ";
+}
+
+/* Notices filter options */
+.notice-filter-table {
+	/* Left-column cells (containing labels). */
+	/* Right-column cells (containing inputs). */
+	/* Full-width cells. */
+}
+.notice-filter-table th,
+.notice-filter-table td {
+	width: 50%; 
+	padding: 7px;
+	padding: 0.38889rem;
+}
+.notice-filter-table th {
+	text-align: right;
+}
+.notice-filter-table td {
+	text-align: left;
+}
+.notice-filter-table .notice-filter-span-2 {
+	width: 100%;
+	text-align: center;
+}
+.notice-filter-table input {
+	font-weight: 300; 
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
+.notice-filter-table label {
+	color: #67b46a;
+}
+.notice-filter-table label:after {
+	content: ":";
+}
+.notice-filter-table .notice-filter-button {
+	font-weight: 700;
+	font-size: 18px;
+	font-size: 1rem;
+	line-height: 1.55556;
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+	letter-spacing: 0.05em; 
+	text-transform: uppercase;
 }
 
 /*--------------------------------------------------------------
