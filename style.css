@@ -5,7 +5,7 @@ Theme URI: http://www.yumagazine.co.uk/
 Author: cJ barnes
 Author URI: http://www.cjbarnes.co.uk/
 Description: WordPress theme for Yu Magazine
-Version: 1.1.0
+Version: 1.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: yumag
@@ -2253,6 +2253,39 @@ figure {
 	margin: 14px 0 28px;
 	margin: 0.77778rem 0 1.55556rem;
 	font-weight: bold;
+}
+
+/* Social media sharing options */
+.yumag-social-sharing {
+	margin-top: 28px;
+	margin-top: 1.55556rem;
+}
+.yumag-social-sharing h4,
+.yumag-social-sharing ul,
+.yumag-social-sharing li {
+	display: inline-block;
+	margin: 0; 
+	font-size: 18px;
+	font-size: 1rem;
+	line-height: 1.55556;
+}
+.yumag-social-sharing.yumag-social-sharing h4 {
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
+.yumag-social-sharing ul {
+	padding-left: 0;
+}
+.yumag-social-sharing li {
+	margin-left: 1em;
+}
+.yumag-social-sharing.yumag-social-sharing .yumag-social-sharing-facebook {
+	color: #3b5998;
+}
+.yumag-social-sharing.yumag-social-sharing .yumag-social-sharing-twitter {
+	color: #55acee;
+}
+.yumag-social-sharing.yumag-social-sharing .yumag-social-sharing-linkedin {
+	color: #0077b5;
 }
 
 @media (min-width: 720px) {
