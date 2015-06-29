@@ -301,3 +301,24 @@ function yumag_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'yumag_tag_cloud_args');
 endif;
+
+if ( ! function_exists( 'yumag_rss_title' ) ) :
+/**
+ * Append subtitle field to the post title in the RSS feed.
+ *
+ * @since 1.1.0
+ *
+ * @param string $title The post title.
+ * @return string Contents of the title element for this RSS item.
+ */
+function yumag_rss_title( $title ) {
+
+	// Add subtitle to end of title.
+	$title .= function_exists( 'the_subtitle' )
+		? the_subtitle( ' / ', '', false )
+		: '';
+
+	return $title;
+}
+add_filter( 'the_title_rss', 'yumag_rss_title' );
+endif;
