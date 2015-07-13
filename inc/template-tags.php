@@ -137,7 +137,7 @@ function yumag_author_student_details( $author_id = 0 ) {
 	$uoy_details = array();
 	foreach( array( 'department', 'college', 'class_of' ) as $field ) {
 		$$field = types_render_usermeta_field( "uoy_$field", array() );
-		if ( ! empty( $$field ) && ( 'None' !== $$field ) ) {
+		if ( ! empty( $$field ) && ( 'None' !== $$field ) && ( '-1' !== $$field ) ) {
 			$uoy_details[] = $$field;
 		}
 	}
