@@ -67,6 +67,12 @@ big {
 	font-size: 125%;
 }
 
+/* Don't uppercase secondary heading text */
+h3 small,
+h4 small {
+	text-transform: none;
+}
+
 /* Lead/lede. */
 .lead {
 	@include font-size-line( "large" );

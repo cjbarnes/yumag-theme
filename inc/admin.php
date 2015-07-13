@@ -97,6 +97,11 @@ function yumag_tinymce_setup( $settings ) {
 			'classes' => 'student-details'
 		),
 		array(
+			'title' => _x( 'Heading secondary text', 'TinyMCE styles dropdown', 'yumag' ),
+			'inline' => 'small',
+			'classes' => 'secondary-heading'
+		),
+		array(
 			'title' => _x( 'Quote source', 'TinyMCE styles dropdown', 'yumag' ),
 			'block' => 'p',
 			'classes' => 'quote-source'
