@@ -205,6 +205,11 @@ function yumag_scripts() {
 
 	wp_enqueue_script( 'yumag-navigation', $src . 'navigation.js', array(), '20120206', true );
 
+	wp_enqueue_script( 'yumag-comment-form', $src . 'comment-form.js', array(), '20150714', true );
+	wp_localize_script( 'yumag-comment-form', 'l10n', array(
+		'toggleLabel' => __( 'Leave a comment', 'Comment form toggle label', 'yumag' )
+	) );
+
 	wp_enqueue_script( 'yumag-layout', $src . 'layout.js', array(), '20150528', true );
 
 	wp_enqueue_script( 'yumag-skip-link-focus-fix', $src . 'skip-link-focus-fix.js', array(), '20130115', true );

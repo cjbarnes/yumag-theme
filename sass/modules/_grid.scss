@@ -37,7 +37,7 @@
 //                               [CONTENT]
 //                       .related-posts-wrap
 //                           [ROW] .related-posts
-//                               [COLUMN 12/10] .index-content
+//                               [COLUMN 12/10/8] .index-content
 //                                   .index-posts
 //                       .footer.entry-footer-wrap
 //                           [ROW] .entry-footer
@@ -45,13 +45,13 @@
 //                               [COLUMN 12/10/8/6] .posted-on
 //                               [COLUMN 12/10/8/6] .tags-links
 //                   [ROW] #comments.comments-footer
-//                       [COLUMN 12/10] .comments-area
+//                       [COLUMN 12/10/8/6] .comments-area
 //                           h2.comments-title
 //                           [NESTED-ROW] #comment-nav-above.comment-navigation
 //                           	[COLUMN 12/5] .nav-previous
 //                           	[COLUMN 12/5] .nav-next
-//                           [NESTED-ROW] ol.comment-list
-//                           	[COLUMN 12/10/5] li.comment
+//                           ol.comment-list
+//                           	li.comment
 //                           		article.comment-body
 //                           			footer.comment-meta
 //                           				.comment-author.vcard
@@ -79,8 +79,7 @@
 	@include row;
 }
 
-.comment-navigation,
-.comment-list {
+.comment-navigation {
 	@include nested-row;
 }
 
@@ -112,11 +111,6 @@
 	@include pull;
 }
 
-/* Nested single column. */
-.comment {
-	@include column(10, $padding, 10);
-}
-
 @include media( "main-spacing-1" ) {
 
 	/* Narrower content column than everything else, for better line length. */
@@ -125,7 +119,8 @@
 	.single-entry-footer .entry-author,
 	.single-entry-footer .posted-on,
 	.nav-links,
-	.single-entry-footer .tags-links {
+	.single-entry-footer .tags-links,
+	.comments-area {
 		@include column(8);
 		@include push(2);
 		@include pull(2);
@@ -149,15 +144,11 @@
 	.single-entry-footer .entry-author,
 	.single-entry-footer .posted-on,
 	.nav-links,
-	.single-entry-footer .tags-links {
+	.single-entry-footer .tags-links,
+	.comments-area {
 		@include column(6);
 		@include push(3);
 		@include pull(3);
-	}
-
-	/* Side-by-side comments. */
-	.comment {
-		@include column(5, $padding, 10);
 	}
 
 	/* Left-aligned single post layout. */

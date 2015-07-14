@@ -23,14 +23,27 @@ $sections = array(
 // URL-path to images.
 $src = get_template_directory_uri() . '/assets/';
 
+// Find out if this is the latest Issue.
+if ( class_exists( 'PeriodicalPress_Template_Tags' ) ) {
+	$pp = new PeriodicalPress_Template_Tags();
+	$is_current_issue = $pp->is_current_issue();
+} else {
+	$is_current_issue = false;
+}
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
 
-		<?php if ( is_home() ) : ?>
+		<?php if ( $is_current_issue ) : ?>
 			<section class="issue-section slider">
 				<?php get_template_part( 'slider' ); ?>
 			</section>
+		<?php else: ?>
+			<header class="archive-header issue-header">
+				<h1 class="archive-title issue-title"><?php yumag_issue_title(); ?></h1>
+				<a class="issue-header-current-link" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Go to latest issue', 'yumag' ); ?></a>
+			</header><!-- .archive-header -->
 		<?php endif; ?>
 
 		<main id="main" class="site-main" role="main">

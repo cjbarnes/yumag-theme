@@ -2,6 +2,10 @@
 	@include rem( "margin-bottom", ( $line * 2.5 ) );
 }
 
+.issue-header {
+	text-align: center;
+}
+
 .archive-title {
 	@include font-size-line( "normal" );
 	margin: 0;

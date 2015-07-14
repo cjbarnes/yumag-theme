@@ -1161,6 +1161,7 @@ a:active {
 .entry-issue,
 .cat-links a,
 .tags-links a,
+.comment-list .fn a,
 .archive-title a,
 .index-posts .entry-meta a,
 .category-archive-link a,
@@ -1178,6 +1179,7 @@ a:active {
 .entry-issue:hover,
 .cat-links a:hover,
 .tags-links a:hover,
+.comment-list .fn a:hover,
 .archive-title a:hover,
 .category-archive-link a:hover,
 .category-yorklife .footer a:hover,
@@ -1191,6 +1193,7 @@ a:active {
 .entry-issue:focus,
 .cat-links a:focus,
 .tags-links a:focus,
+.comment-list .fn a:focus,
 .archive-title a:focus,
 .category-archive-link a:focus,
 .category-yorklife .footer a:focus,
@@ -1204,6 +1207,7 @@ a:active {
 .entry-issue:active,
 .cat-links a:active,
 .tags-links a:active,
+.comment-list .fn a:active,
 .archive-title a:active,
 .category-archive-link a:active,
 .category-yorklife .footer a:active,
@@ -1704,8 +1708,7 @@ figure {
 	clear: both;
 }
 
-.comment-navigation,
-.comment-list {
+.comment-navigation {
 	display: block;
 	max-width: 1400px;
 	margin: 0 -14px;
@@ -1714,14 +1717,11 @@ figure {
 	*zoom: 1;
 }
 .comment-navigation:before,
-.comment-navigation:after,
-.comment-list:before,
-.comment-list:after {
+.comment-navigation:after {
 	content: " ";
 	display: table;
 }
-.comment-navigation:after,
-.comment-list:after {
+.comment-navigation:after {
 	clear: both;
 }
 
@@ -1758,14 +1758,6 @@ figure {
 	padding: 0 14px;
 }
 
-/* Nested single column. */
-.comment {
-	float: left;
-	display: inline;
-	width: 100%;
-	padding: 0 14px;
-}
-
 @media screen and (min-width: 800px) {
 	/* Narrower content column than everything else, for better line length. */
 	.author-bio-content,
@@ -1773,7 +1765,8 @@ figure {
 	.single-entry-footer .entry-author,
 	.single-entry-footer .posted-on,
 	.nav-links,
-	.single-entry-footer .tags-links {
+	.single-entry-footer .tags-links,
+	.comments-area {
 		float: left;
 		display: inline;
 		width: 66.66667%;
@@ -1800,19 +1793,13 @@ figure {
 	.single-entry-footer .entry-author,
 	.single-entry-footer .posted-on,
 	.nav-links,
-	.single-entry-footer .tags-links {
+	.single-entry-footer .tags-links,
+	.comments-area {
 		float: left;
 		display: inline;
 		width: 50%;
 		margin-right: 25%; 
 		margin-left: 25%;
-		padding: 0 14px;
-	}
-	/* Side-by-side comments. */
-	.comment {
-		float: left;
-		display: inline;
-		width: 50%;
 		padding: 0 14px;
 	}
 	/* Left-aligned single post layout. */
@@ -2309,19 +2296,61 @@ figure {
 
 /* 11.2 Comments
 --------------------------------------------------------------*/
+/* Main wrapper for comments */
 .comments-footer {
 	position: relative;
 	/* to overlap fixed-position content images */
 	background: #e0e0e4;
 }
 
+/* 'X Comments' heading */
+.comments-area .comments-title,
+.comments-area .comment-reply-title {
+	font-size: 21px;
+	font-size: 1.16667rem;
+	line-height: 1.33333;
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+	text-align: center;
+	letter-spacing: 0.05em;
+}
+
+.comment {
+	margin-bottom: 28px;
+	margin-bottom: 1.55556rem;
+	padding-top: 14px;
+	padding-top: 0.77778rem;
+	border-top: 0.77778rem solid #9696a0;
+	background: #fff;
+}
+
 .comment-content {
+	padding: 14px;
+	padding: 0.77778rem;
 	font-size: 16px;
 	font-size: 0.88889rem;
 	line-height: 1.75;
 }
+.comment-content p {
+	margin-bottom: 14px;
+	margin-bottom: 0.77778rem;
+}
+.comment-content p:last-child {
+	margin-bottom: 0;
+}
 .comment-content a {
 	word-wrap: break-word;
+}
+
+.comment-metadata,
+.comment-reply-link {
+	font-size: 14px;
+	font-size: 0.77778rem;
+	line-height: 2;
+}
+
+.comment-metadata > a {
+	border-bottom: 0; 
+	color: #171717;
 }
 
 .bypostauthor {
@@ -2330,10 +2359,96 @@ figure {
 
 /* Comment form help. */
 .form-allowed-tags {
+	font-size: 14px;
+	font-size: 0.77778rem;
+	line-height: 2;
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
+
+.comment-list {
+	margin-left: 0; 
+	padding-left: 0;
+}
+.comment-list,
+.comment-list ol {
+	list-style: none;
+}
+.comment-list .fn {
+	font-weight: 700;
 	font-size: 16px;
 	font-size: 0.88889rem;
 	line-height: 1.75;
+	letter-spacing: 0.05em; 
+	text-transform: uppercase;
+}
+.comment-list .fn a {
+	color: #171717;
+}
+.comment-list img.photo,
+.comment-list .says {
+	display: none;
+}
+
+.comment-meta {
+	padding-right: 14px;
+	padding-right: 0.77778rem;
+	padding-left: 14px;
+	padding-left: 0.77778rem;
 	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
+
+.comment-respond,
+.comment-form .submit,
+.comment-form-toggle {
+	font-family: "Lato", "Aleo", Constantia, Georgia, sans-serif;
+}
+
+.comment-notes,
+.comment-respond label,
+.comment-form .logged-in-as {
+	font-size: 16px;
+	font-size: 0.88889rem;
+	line-height: 1.75;
+}
+
+.comment-respond label {
+	display: inline-block;
+	min-width: 20%;
+}
+
+.form-allowed-tags {
+	display: none;
+}
+
+.comment-form .submit,
+.comment-form-toggle {
+	margin-bottom: 3px;
+	font-weight: 700;
+	font-size: 18px;
+	font-size: 1rem;
+	line-height: 1.55556;
+	text-transform: uppercase;
+}
+
+.comment-form .form-submit,
+.comment-form-toggle-wrap {
+	text-align: center;
+}
+
+.comment-form-comment textarea {
+	font-size: 16px;
+	font-size: 0.88889rem;
+	line-height: 1.75;
+}
+
+.comment-respond.closed .comment-form,
+.comment-respond.closed .comment-reply-title {
+	display: none;
+}
+
+.comment-form-toggle-wrap {
+	margin-top: 56px;
+	margin-top: 3.11111rem;
 }
 
 /* 11.3 Taxonomies
@@ -2341,6 +2456,10 @@ figure {
 .archive-header {
 	margin-bottom: 70px;
 	margin-bottom: 3.88889rem;
+}
+
+.issue-header {
+	text-align: center;
 }
 
 .archive-title {
@@ -3315,6 +3434,9 @@ object {
 .category-yorklife .iis-caption {
 	border-right-color: #dcd4c6;
 }
+.category-yorklife .comment {
+	border-top-color: #dcd4c6;
+}
 .category-yorklife .iis-caption .cat-links a,
 .category-yorklife .slider-subtitle {
 	color: #dcd4c6;
@@ -3612,6 +3734,9 @@ object {
 }
 .category-open-minds .iis-caption {
 	border-right-color: #69bcc9;
+}
+.category-open-minds .comment {
+	border-top-color: #69bcc9;
 }
 .category-open-minds .iis-caption .cat-links a,
 .category-open-minds .slider-subtitle,
@@ -4028,6 +4153,9 @@ object {
 .category-centre-stage .iis-caption {
 	border-right-color: #f0ef84;
 }
+.category-centre-stage .comment {
+	border-top-color: #f0ef84;
+}
 .category-centre-stage .iis-caption .cat-links a,
 .category-centre-stage .slider-subtitle {
 	color: #f0ef84;
@@ -4368,6 +4496,9 @@ object {
 .category-all-about-yu .iis-caption {
 	border-right-color: #9acd9c;
 }
+.category-all-about-yu .comment {
+	border-top-color: #9acd9c;
+}
 .category-all-about-yu .iis-caption .cat-links a,
 .category-all-about-yu .slider-subtitle {
 	color: #9acd9c;
@@ -4680,6 +4811,9 @@ object {
 }
 .category-back-page .iis-caption {
 	border-right-color: #e8cfeb;
+}
+.category-back-page .comment {
+	border-top-color: #e8cfeb;
 }
 .category-back-page .iis-caption .cat-links a,
 .category-back-page .slider-subtitle {
@@ -5001,6 +5135,9 @@ object {
 .post-type-archive-yumag_notice .notice-label {
 	font-weight: 700;
 	color: #67b46a;
+}
+.post-type-archive-yumag_notice .comment {
+	border-top-color: #9acd9c;
 }
 .post-type-archive-yumag_notice .cat-links a {
 	color: #67b46a;

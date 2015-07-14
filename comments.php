@@ -66,7 +66,9 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'yumag' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php comment_form( array(
+		'title_reply' => __( 'Leave a comment' , 'yumag' )
+	) ); ?>
 
 	</div>
 

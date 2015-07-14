@@ -1,15 +1,55 @@
+/* Main wrapper for comments */
 .comments-footer {
 	position: relative; /* to overlap fixed-position content images */
 	background: $background-color__footer;
 }
 
+/* 'X Comments' heading */
+.comments-area .comments-title,
+.comments-area .comment-reply-title {
+	@include font-size-line( "large" );
+	font-family: $font-family__meta;
+	text-align: center;
+	letter-spacing: $letter-spacing__caps;
+}
+
+.comment {
+	@include rem( "margin-bottom", $spacing );
+	@include rem( "padding-top", $height__rule );
+	border-top: $height__rule solid $color__neutral;
+	background: $background-color;
+}
+
 .comment-content  {
+	@include rem( "padding", $padding__widget );
 	@include font-size-line( "small" );
+
+	// Reduce spacing in-between paragraphs
+	p {
+		@include rem( "margin-bottom", ( $spacing * 0.5 ) );
+
+		// Equalize top and bottom spacing within comment content area
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+	}
 
 	a {
 		word-wrap: break-word;
 	}
 
+}
+
+.comment-metadata,
+.comment-reply-link {
+	@include font-size-line( "smaller" );
+}
+
+// Date-time permalink
+.comment-metadata > a {
+	color: $color__main;
+	border-bottom: 0;
 }
 
 .bypostauthor {
@@ -18,6 +58,102 @@
 
 /* Comment form help. */
 .form-allowed-tags {
-	@include font-size-line( "small" );
+	@include font-size-line( "smaller" );
 	font-family: $font-family__meta;
+}
+
+.comment-list {
+	padding-left: 0;
+	margin-left: 0;
+
+	&,
+	& ol {
+		list-style: none;
+	}
+
+	// Style commenter names
+	.fn {
+		@include font-size-line( "small" );
+		font-weight: $font-weight__serif__bold;
+		text-transform: uppercase;
+		letter-spacing: $letter-spacing__caps;
+
+		a {
+			color: $color__main;
+			@extend %hide-underline;
+		}
+
+	}
+
+	// Comment things to hide:
+	// - user photo
+	// - 'says:' suffix
+	img.photo,
+	.says {
+		display: none;
+	}
+
+}
+
+// Wrapper for comment headers
+.comment-meta {
+	@include rem( "padding-right", $padding__widget );
+	@include rem( "padding-left", $padding__widget );
+	font-family: $font-family__meta;
+	//text-align: center;
+}
+
+// Comment form
+
+.comment-respond,
+.comment-form .submit,
+.comment-form-toggle {
+	font-family: $font-family__meta;
+}
+
+.comment-notes,
+.comment-respond label,
+.comment-form .logged-in-as {
+	@include font-size-line( "small" );
+}
+
+.comment-respond label {
+	display: inline-block;
+	min-width: 20%;
+}
+
+// Hide the allowed HTML tags instructions
+.form-allowed-tags {
+	display: none;
+}
+
+// Submit button
+.comment-form .submit,
+.comment-form-toggle {
+	@include font-size-line( "normal" );
+	margin-bottom: 3px; // (Safari) avoid bottom of button being cut off
+	font-weight: $font-weight__serif__bold;
+	text-transform: uppercase;
+}
+
+// Submit button alignment
+.comment-form .form-submit,
+.comment-form-toggle-wrap {
+	text-align: center;
+}
+
+// Comment itself
+.comment-form-comment textarea {
+	@include font-size-line( "small" );
+}
+
+// Make the show/hide toggling work
+.comment-respond.closed .comment-form,
+.comment-respond.closed .comment-reply-title {
+	display: none;
+}
+
+// Spacing above Leave a Comment button
+.comment-form-toggle-wrap {
+	@include rem( "margin-top", ( $line * 2 ) );
 }

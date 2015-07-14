@@ -47,6 +47,10 @@
 		color: $color__allaboutyu__dark;
 	}
 
+	.comment {
+		border-top-color: $color__allaboutyu;
+	}
+
 	.cat-links a {
 		@extend %hide-underline;
 		color: $color__allaboutyu__dark;
