@@ -26,9 +26,11 @@
 			oddColumn = document.createElement( 'div' ),
 			evenColumn = oddColumn.cloneNode( true );
 
+		numberOfColumns = parseInt( numberOfColumns, 10 );
+
 		if ( 1 < posts.length ) {
 
-			if ( ( 'string' === typeof numberOfColumns ) && ( 3 === parseInt( numberOfColumns, 10 ) ) ) {
+			if ( 3 === numberOfColumns ) {
 
 				// Assemble left column.
 				for ( i2 = 1, l2 = ( Math.floor( posts.length / 2 ) + 1 ); i2 < l2; i2++ ) {
