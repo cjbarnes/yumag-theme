@@ -155,10 +155,7 @@
 
 			/* First article. */
 			> .entry {
-
-				.entry-header {
-					background: $color__main;
-				}
+				background: $color__main;
 
 				/* Leave space around the text, so it isn't flush to the left edge of the first article's black background */
 				.entry-title,
@@ -247,10 +244,10 @@
 					float: left;
 					margin-bottom: 0;
 					max-width: 100%;
+					background: $color__main;
 
 					.entry-header {
 						@include rem( "padding-bottom", ( $line * 0.5 ) );
-						background: $color__main;
 					}
 
 					.entry-image {
@@ -366,15 +363,22 @@
 					width: 100%;
 					max-width: 100%;
 					min-height: 0;
+					margin-top: $line;
 					margin-bottom: 0;
 					padding-left: 0; // for alignment with the centre gutter.
 					flex: 0 1 auto;
+
+					&:first-child {
+						margin-top: 0;
+					}
 
 					.entry-image {
 						line-height: 0.5; /* fix for excess space under the image */
 					}
 
 					@include quantity-query( 3, "greater" ) {
+						margin: 0;
+
 						// If there's 3 articles, save more space by hiding the
 						// content.
 						.entry-content {

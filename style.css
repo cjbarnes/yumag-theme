@@ -3808,10 +3808,8 @@ object {
 		/* First article. */
 	}
 	.category-open-minds .issue-section-posts .issue-section-flex > .entry {
-		/* Leave space around the text, so it isn't flush to the left edge of the first article's black background */
-	}
-	.category-open-minds .issue-section-posts .issue-section-flex > .entry .entry-header {
 		background: #171717;
+		/* Leave space around the text, so it isn't flush to the left edge of the first article's black background */
 	}
 	.category-open-minds .issue-section-posts .issue-section-flex > .entry .entry-title,
 	.category-open-minds .issue-section-posts .issue-section-flex > .entry .entry-subtitle,
@@ -3881,13 +3879,13 @@ object {
 	}
 	.category-open-minds .issue-section-posts .issue-section-noflex .entry:first-child {
 		float: left;
-		max-width: 100%; 
+		max-width: 100%;
 		margin-bottom: 0;
+		background: #171717;
 	}
 	.category-open-minds .issue-section-posts .issue-section-noflex .entry:first-child .entry-header {
 		padding-bottom: 14px;
 		padding-bottom: 0.77778rem;
-		background: #171717;
 	}
 	.category-open-minds .issue-section-posts .issue-section-noflex .entry:first-child .entry-image {
 		width: 100%;
@@ -4025,6 +4023,7 @@ object {
 		width: 100%;
 		max-width: 100%;
 		min-height: 0;
+		margin-top: 1.55556rem;
 		margin-bottom: 0;
 		padding-left: 0;
 
@@ -4034,9 +4033,16 @@ object {
 		-ms-flex: 0 1 auto;
 		flex: 0 1 auto;
 	}
+	.category-open-minds .issue-section-posts .issue-section-flex > div .entry:first-child {
+		margin-top: 0;
+	}
 	.category-open-minds .issue-section-posts .issue-section-flex > div .entry .entry-image {
 		line-height: 0.5;
 		/* fix for excess space under the image */
+	}
+	.category-open-minds .issue-section-posts .issue-section-flex > div .entry:nth-last-child(n+3):first-child,
+	.category-open-minds .issue-section-posts .issue-section-flex > div .entry:nth-last-child(n+3):first-child ~ * {
+		margin: 0;
 	}
 	.category-open-minds .issue-section-posts .issue-section-flex > div .entry:nth-last-child(n+3):first-child .entry-content,
 	.category-open-minds .issue-section-posts .issue-section-flex > div .entry:nth-last-child(n+3):first-child ~ * .entry-content {
