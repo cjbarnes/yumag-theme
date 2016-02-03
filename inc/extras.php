@@ -322,3 +322,108 @@ function yumag_rss_title( $title ) {
 }
 add_filter( 'the_title_rss', 'yumag_rss_title' );
 endif;
+
+// if ( ! function_exists( 'yumag_email_replace_query' ) ) :
+// /**
+//  * Configure the Loop on the email-creation template.
+//  *
+//  * The email-creation template should have the slug `generate-email`.
+//  *
+//  * Hook this up to run **before** the PeriodicalPress plugin modifies the
+//  * main query.
+//  *
+//  * @since 1.2.0
+//  *
+//  * @param WP_Query $query The query object for the forthcoming posts query.
+//  */
+// function yumag_email_replace_query( $query ) {
+
+// 	/*
+// 	 * The standard conditional function is_main_query() does not return the
+// 	 * right results within the pre_get_posts hook.
+// 	 */
+// 	if ( ! $query->is_main_query()
+// 	|| ! is_page( 'generate-email' )
+// 	|| ! class_exists( 'PeriodicalPress' ) ) {
+// 		return;
+// 	}
+
+// 	// Get the PeriodicalPress plugin, which sets up the Issues taxonomy.
+// 	$pp = PeriodicalPress::get_instance();
+
+// 	// Get the current Issue's ID.
+// 	$current_issue = (int) get_option( 'pp_current_issue' , 0 );
+// 	if ( ! $current_issue ) {
+// 		$pp_common = PeriodicalPress_Common::get_instance( $pp );
+// 		$current_issue = $pp_common->get_newest_issue_id();
+// 	}
+// 	if ( ! $current_issue ) {
+// 		return;
+// 	}
+
+// 	// Remove the original options from the query.
+// 	$query->set( 'page_id', null );
+// 	$query->set( 'pagename', null );
+// 	$query->set( 'p', null );
+// 	$query->set( 'page', null );
+// 	$query->set( 'post_type', 'post' );
+
+// 	// Modify the query to target the current Issue.
+// 	$tax_query = array(
+// 		'taxonomy' => $pp->get_taxonomy_name(),
+// 		'field'    => 'term_id',
+// 		'terms'    => array( $current_issue ),
+// 		'operator' => 'IN'
+// 	);
+// 	$query->set( 'tax_query', array( $tax_query ) );
+
+// }
+// add_filter( 'pre_get_posts', 'yumag_email_replace_query', 9 );
+// endif;
+
+if ( ! function_exists( 'yumag_email_query_vars' ) ) :
+/**
+ * [yumag_email_query_vars description]
+ *
+ * @since 1.2.0
+ *
+ * @param array $qvars List of allowed query vars.
+ * @return array Revised list of allowed query vars.
+ */
+function yumag_email_query_vars( $qvars ) {
+	$qvars[] = 'generate-email';
+	return $qvars;
+}
+add_filter( 'query_vars', 'yumag_email_query_vars' );
+endif;
+
+if ( ! function_exists( 'yumag_email_replace_template' ) ) :
+/**
+ * Intercept email-generation requests so they use the emails template.
+ *
+ * @since 1.2.0
+ *
+ * @param string $template Path to the template that will be loaded.
+ * @return string Path to the template to load.
+ */
+function yumag_email_replace_template( $template ) {
+
+	if ( ! class_exists( 'PeriodicalPress' ) ) {
+		return;
+	}
+	$pp = PeriodicalPress::get_instance();
+
+	if ( ( is_home() || is_tax( $pp->get_taxonomy_name() ) ) && ( '' != get_query_var( 'generate-email' ) ) && current_user_can( 'manage_options' ) ) {
+
+		$new_template = locate_template( 'taxonomy-pp_issue-email.php' );
+
+		if ( '' != $new_template ) {
+			return $new_template ;
+		}
+
+	}
+
+	return $template;
+}
+add_filter( 'template_include', 'yumag_email_replace_template', 99 );
+endif;

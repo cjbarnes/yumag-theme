@@ -109,6 +109,8 @@ function yumag_setup() {
 	add_image_size( 'yumag-featured-photo',          905,  509, true );
 	add_image_size( 'yumag-featured-photo-portrait', 474,  474, true );
 	add_image_size( 'yumag-slider-photo',            625,  352, true );
+	add_image_size( 'yumag-email-1',                 287,  170, true );
+	add_image_size( 'yumag-email-2',                 183,  130, true );
 
 	/*
 	 * Register stylesheet for TinyMCE content (editor-style.css).

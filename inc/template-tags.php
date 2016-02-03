@@ -236,6 +236,28 @@ function yumag_entry_image( $size = 'thumbnail', $linked = true ) {
 }
 endif;
 
+if ( ! function_exists( 'yumag_email_entry_image' ) ) :
+/**
+ * Output the featured image (or 'post thumbnail') at the specified size.
+ *
+ * @since 1.2.0
+ *
+ * @param string|array $size  Optional. The width/height array for the image.
+ *                            Default 300x200.
+ * @param string       $class Optional. The classes to apply to the image tag.
+ *                            Default ''.
+ */
+function yumag_email_entry_image( $size = array( 300, 200 ), $classes = '' ) {
+
+	if ( has_post_thumbnail() ) {
+		the_post_thumbnail( $size, array( 'class' => $classes ) );
+	} else {
+		echo '<img class="' . $class . '" src="' . get_template_directory_uri() . '/assets/no-thumbnail.png" width="' . $size[0] . '" height="' . $size[1] . '" alt="">';
+	}
+
+}
+endif;
+
 if ( ! function_exists( 'yumag_entry_title' ) ) :
 /**
  * Output the current post's/page's permalinked title within an H1 element.
