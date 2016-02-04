@@ -339,7 +339,7 @@ if ( have_posts() ) :
 															</td>
 															<td width="10">&nbsp;</td>
 															<!-- link -->
-															<td class="button" style="font-family: 'Open Sans', Arial, sans-serif; font-size: 12px; color: #ffffff;"><a href="mailto:alumni@york.ac.uk">Contact us</a></td>
+															<td class="button" style="font-family: 'Open Sans', Arial, sans-serif; font-size: 12px;"><a style=" color: #fffffe;" href="mailto:alumni@york.ac.uk">Contact us</a></td>
 															<!-- end link -->
 														</tr>
 													</tbody>
@@ -645,7 +645,13 @@ if ( have_posts() ) :
 									<!-- content -->
 									<tbody>
 										<tr align="left">
-											<td style="font-family: 'Open Sans', Arial, sans-serif; font-size: 13px; color: #7f8c8d; line-height: 24px;"><strong><?php the_title(); ?></strong> <?php the_excerpt(); ?> <strong><a href="<?php the_permalink(); ?>">Read more</a></strong>.</td>
+											<td style="font-family: 'Open Sans', Arial, sans-serif; font-size: 13px; color: #7f8c8d; line-height: 24px;"><strong><?php the_title(); ?></strong> <?php
+                        if ( function_exists( 'the_subtitle' ) && ( the_subtitle( '', '', false ) ) ) {
+                          the_subtitle();
+                        } else {
+                          the_excerpt();
+                        }
+                      ?> <strong><a style="color: <?php echo "#$colour"; ?>" href="<?php the_permalink(); ?>">Read&nbsp;more</a></strong></td>
 										</tr>
 										<!-- end content -->
 									</tbody>
@@ -707,7 +713,13 @@ if ( have_posts() ) :
 									<!-- content -->
 									<tbody>
 										<tr align="left">
-											<td style="font-family: 'Open Sans', Arial, sans-serif; font-size: 13px; color: #7f8c8d; line-height: 24px;"><strong><?php the_title(); ?></strong> <?php the_excerpt(); ?> <strong><a href="<?php the_permalink(); ?>">Read more</a></strong>.</td>
+											<td style="font-family: 'Open Sans', Arial, sans-serif; font-size: 13px; color: #7f8c8d; line-height: 24px;"><strong><?php the_title(); ?></strong> <?php
+                        if ( function_exists( 'the_subtitle' ) && ( the_subtitle( '', '', false ) ) ) {
+                          the_subtitle();
+                        } else {
+                          the_excerpt();
+                        }
+                      ?> <strong><a style="color: <?php echo "#$colour"; ?>" href="<?php the_permalink(); ?>">Read&nbsp;more</a></strong></td>
 										</tr>
 										<!-- end content -->
 									</tbody>
@@ -1714,7 +1726,7 @@ endwhile;
                         } else {
                           the_excerpt();
                         }
-                      ?> <strong><a style="color: #ce99d5;" href="<?php the_permalink(); ?>">Read more</a></strong>.</td>
+                      ?> <strong><a style="color: #ce99d5;" href="<?php the_permalink(); ?>">Read&nbsp;more</a></strong>.</td>
                     </tr>
                     <!-- end content -->
                   </tbody>
@@ -1766,7 +1778,7 @@ endwhile;
                         } else {
                           the_excerpt();
                         }
-                      ?> <strong><a style="color: #ce99d5;" href="<?php the_permalink(); ?>">Read more</a></strong>.</td>
+                      ?> <strong><a style="color: #ce99d5;" href="<?php the_permalink(); ?>">Read&nbsp;more</a></strong>.</td>
                     </tr>
                     <!-- end content -->
                   </tbody>
@@ -1860,12 +1872,9 @@ endwhile;
 		</tr>
 		<tr bgcolor="<?php echo "#$colour"; ?>">
 			<td style="font-family: 'Open Sans', Arial, sans-serif; font-size: 11px; color: #ffffff; text-align: center;" align="center" valign="middle" height="50">
-				<p>You are receiving this email because you are an alumnus/a, retired staff, friend or donor of the University of York.
-					<br /><a href="http://www.yorkspace.net/sslpage.aspx?pid=1259"><span style="color: #ffffff;"><span style="color: #ffffff;">Update your email preferences</span></span></a> |<span style="color: #ffffff;"> <a href="http://www.yorkspace.net/about/data-protection"><span style="color: #ffffff;">Privacy Policy and Data Protection</span></a>
-					</span>
-				</p>
+				<p>You are receiving this email because you are an alumnus/a, retired staff, friend or donor of the University of York<a href="target=&amp;pid=1601&amp;did=0&amp;tab=0"  style="color: <?php echo "#$colour"; ?>;">.</a> <br /><a href="target=&amp;pid=1585&amp;did=0&amp;tab=0" style="color: #fffffe;">Update your email preferences</a> | <a href="http://www.yorkspace.net/about/data-protection" style="color: #fffffe;">Privacy Policy and Data Protection</a></p>
 				<p>Your Alumni Reference Number is:&nbsp;<img src="https://www.yorkspace.net/insertField.field?id=120&amp;nmode=0&amp;name=ID&amp;type=1" style="cursor: move;" title="Back-office constituent ID" data-runat="server" data-fieldid="120" data-attribid="0" data-searchable="0" data-fieldname="ID" data-fieldtype="1" data-htmlencode="True" data-isloop="False" /></p>
-				<p style="; font-size: 12px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;"><strong><a style="; text-decoration: underline;" href="https://www.yorkspace.net/emailpreferences">Unsubscribe from this mailing list</a></strong> <strong><a style="; text-decoration: none;" href="https://www.yorkspace.net/about/data-protection">|</a> <a style="; text-decoration: underline;" href="target=&amp;pid=1551&amp;did=0&amp;tab=0">Data Protection and Privacy</a></strong></p>
+				<p style="font-size: 12px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;"><strong><a style="color: #fffffe;" href="https://www.yorkspace.net/emailpreferences">Unsubscribe from this mailing list</a></strong> <span style="color: #fffffe;" href="https://www.yorkspace.net/about/data-protection">|</span> <strong><a style="color: #fffffe;" href="target=&amp;pid=1551&amp;did=0&amp;tab=0">Data Protection and Privacy</a></strong></p>
 			</td>
 		</tr>
 	</tbody>
